@@ -1,0 +1,154 @@
+#catalyst-content-wrapper {
+	position: relative;
+	left: 50%;
+	margin: 0px 0px 0px -500px;
+	width: 1000px;
+	font-family: 'Open Sans', sans-serif;
+}
+	/* ---- BEGIN APP NAV ---- */
+	#catalyst-content-wrapper nav {
+		cursor: pointer;
+		position: absolute;
+		padding: 0;
+		left: 50%;
+		margin-left: -192px;
+	}
+		#catalyst-content-wrapper nav ul{
+			display: block;
+			overflow: auto;
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+			border: solid 2px #0067C5;
+			border-radius: 12px;
+		}
+			#catalyst-content-wrapper nav ul li {
+				display: block;
+				float: left;
+				font-size: 20px;
+				padding: 6px 40px;
+				color: #0067C5;
+			} #catalyst-content-wrapper nav ul li:hover {
+				background-color: #0067C5;
+				color: white;
+			}
+			.selected-catalyst-nav {
+				background-color: #0067C5;
+				color: white !important;
+			}
+	#create-catalyst-button {
+		cursor: pointer;
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		padding: 11px 15px;
+		border: none;
+		background-color: #84BD00;
+		border-radius: 12px;
+		font-size: 17px;
+		color: white;
+	} #create-catalyst-button:focus {
+		outline: none;
+	} #create-catalyst-button:hover {
+		background-color: #658D1B
+	}
+	/* ---- END APP NAV --- */
+	/* ---- BEGIN CREATE STORY VIEW ---- */
+	#story-creation-view {
+		font-size: 20px;
+		position: relative;
+		top: 80px;
+		width: 1000px;
+	}
+		#story-creation-view #story-creation-form {
+			width: 900px;
+			margin: 0px 50px;
+			padding: 15px 0px;
+			background-color: #edecec;
+			list-style-type: none;
+			border-radius: 15px;
+			overflow: auto;
+		}
+			#story-creation-view #story-creation-form h2 {
+				font-size: 15px;
+				width: 240px;
+				text-align: right;
+				float: left;
+				color: #4f4f4f;
+				clear: left;
+				margin: 13px 0px;
+			}
+			#story-creation-view #story-creation-form .create-story-input-field {
+				float: left;
+				border: none;
+				margin: 10px 20px;
+				background-color: #d5d4d4;
+				border-radius: 5px;
+				font-size: 12px;
+			} #story-creation-view #story-creation-form .create-story-input-field:focus {
+				outline: none;
+			}
+			#story-creation-view #story-creation-form input {
+				height: 27px;
+				width: 200px;	
+				padding: 0px 0px 0px 10px;		
+			} 
+			#story-creation-view #story-creation-form select {
+				height: 27px;
+				width: 300px;
+				padding: 0px 0px 0px 10px;
+			} 
+			#story-creation-view #story-creation-form textarea {
+				resize: none;
+				height: 200px;
+				width: 500px;
+				padding: 10px;
+			} 
+			#story-creation-view #story-creation-form button {
+				cursor: pointer;
+				padding: 15px;
+			}
+		#story-creation-view #submit-story-creation {
+			float: right;
+			margin-right: 50px;
+			margin-top: 20px;
+			cursor: pointer;
+			padding: 11px 15px;
+			border: none;
+			background-color: #84BD00;
+			border-radius: 12px;
+			font-size: 17px;
+			color: white;
+		} #story-creation-view #submit-story-creation:focus {
+			outline: none;
+		} #story-creation-view #submit-story-creation:hover {
+			background-color: #658D1B
+		}		
+	/* ---- END CREATE STORY VIEW ---- */
+
+	/* ---- BEGIN FEATURED VIEW ---- */
+	#featured-view {
+		font-size: 20px;
+		position: relative;
+		top: 80px;
+		width: 1000px;
+	}
+	/* ---- END FEATURED VIEW ---- */
+
+	/* ---- BEGIN ALL VIEW ---- */
+	#all-view {
+		font-size: 20px;
+		position: relative;
+		top: 80px;
+		width: 1000px;
+	}
+	/* ---- END ALL VIEW ---- */
+
+	/* ---- BEGIN MAP VIEW ---- */
+	#map-view {
+		font-size: 20px;
+		position: relative;
+		top: 80px;
+		width: 1000px;
+	}
+	/* ---- END MAP VIEW ---- */
