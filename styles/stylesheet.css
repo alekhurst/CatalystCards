@@ -7,8 +7,8 @@
 }
 	/* ---- BEGIN APP NAV ---- */
 	#catalyst-content-wrapper nav {
-		cursor: pointer;
 		position: absolute;
+		cursor: pointer;
 		padding: 0;
 		left: 50%;
 		margin-left: -192px;
@@ -52,12 +52,35 @@
 	} #create-catalyst-button:hover {
 		background-color: #658D1B
 	}
+
+	#catalyst-types-header {
+		position: absolute;
+		top: 70px;
+		margin: 0;
+		width: 1000px;
+	}
+		#catalyst-types-header article {
+			float: left;
+			width: 250px;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+			#catalyst-types-header article img {
+				width: 100px;
+				height: 100px;
+				margin: 0;
+			}
+			#catalyst-types-header article h1 {
+				font-size: 15px;
+				margin: 0;
+			} 
 	/* ---- END APP NAV --- */
 	/* ---- BEGIN CREATE STORY VIEW ---- */
 	#story-creation-view {
+		position: absolute;
 		font-size: 20px;
-		position: relative;
-		top: 80px;
+		top: 210px;
 		width: 1000px;
 	}
 		#story-creation-view #story-creation-form {
@@ -128,11 +151,69 @@
 
 	/* ---- BEGIN FEATURED VIEW ---- */
 	#featured-view {
+		position: absolute;
 		font-size: 20px;
-		position: relative;
-		top: 80px;
+		top: 210px;
 		width: 1000px;
 	}
+		.featured-story {
+			width: 1000px;
+			height: 300px;
+			background-color: #edecec;
+			margin-bottom: 15px;
+			border-radius: 15px;
+		}
+			.featured-story .featured-story-photo-container {
+				float: left;
+				height: 300px;
+				width: 470px;
+				margin: 0;
+				padding: 0;
+			}
+				.featured-story .featured-story-photo {
+					float: right;
+					height: 300px;
+					max-width: 470px;
+					border-radius: 0px 15px 15px 0px;
+					margin: 0;
+					padding: 0;
+				}
+			.featured-story-contents {
+				float: left;
+				padding: 40px;
+				width: 450px;
+				height: 220px;
+			}
+				.featured-story .featured-story-contents .featured-story-catalyst-card {
+					float: left;
+					margin: 6px 10px 0px 0px;
+					padding: 0;
+					width: 75px;
+					height: 75px;
+				}
+				.featured-story .featured-story-contents .featured-story-name {
+					color: #0067C5;
+					font-size: 30px;
+					margin: 0;
+				}
+				.featured-story .featured-story-contents .featured-story-group {
+					color: #84BD00;
+					font-size: 16px;
+					margin: 0;
+				}
+				.featured-story .featured-story-contents .featured-story-region {
+					color: #84BD00;
+					font-size: 16px;
+					margin: 0;
+				}
+				.featured-story .featured-story-contents .featured-story-story {
+					color: #4f4f4f;
+					font-size: 15px;
+					margin: 15px 0px 0px 0px;
+					height: 130px;
+					width: 400px;
+					overflow-y: scroll;
+				}
 	/* ---- END FEATURED VIEW ---- */
 
 	/* ---- BEGIN ALL VIEW ---- */

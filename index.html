@@ -17,6 +17,42 @@
 				</ul>
 			</nav>
 			<button id="create-catalyst-button" ng-click="changeViews('create')">Create One!</button>
+			<header id="catalyst-types-header" >
+				<article class="catalyst-commitment-type">
+					<img src="images/catcard1.png">
+					<h1>Candor</h1>
+				</article>
+				<article class="catalyst-commitment-type">
+					<img src="images/catcard1.png">
+					<h1>Clarity</h1>
+				</article>
+				<article class="catalyst-commitment-type">
+					<img src="images/catcard1.png">
+					<h1>Ownership</h1>
+				</article>
+				<article class="catalyst-commitment-type">
+					<img src="images/catcard1.png">
+					<h1>Speed</h1>
+				</article>
+			</header>
+
+			<!-- Featured View -->
+			<section id="featured-view" ng-show="current_view === 'featured'">
+				<article class="featured-story" ng-repeat="featured_story in featured_stories">
+					<div class="featured-story-contents">
+						<img class="featured-story-catalyst-card" ng-src="{{ featured_story.card_type }}">
+						<div class="featured-story-header">
+							<h2 class="featured-story-name"> {{ featured_story.name }} </h2>
+							<h4 class="featured-story-group"> {{ featured_story.group }} </h4>
+							<h4 class="featured-story-region"> {{ featured_story.region }} </h4>
+						</div>
+						<p class="featured-story-story"> {{ featured_story.story }} </p>
+					</div>
+					<div class='featured-story-photo-container'>
+						<img class="featured-story-photo" ng-src="{{ featured_story.photo_url }}">
+					</div>
+				</article>
+			</section>
 
 			<!-- Story Creation View -->
 			<section id="story-creation-view" ng-show="current_view === 'create'">
@@ -27,8 +63,8 @@
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.last_name">
 					<h2>Email</h2> 
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.email">
-					<h2>Region</h2> 
-					<select class="create-story-input-field" ng-model="story_creation_input.region" ng-options="location.id as location.title for location in locations"></select>
+					<h2>region</h2> 
+					<select class="create-story-input-field" ng-model="story_creation_input.region" ng-options="region.id as region.title for region in regions"></select>
 					<h2>Group </h2> 
 					<select class="create-story-input-field" ng-model="story_creation_input.group" ng-options="group.id as group.title for group in groups"></select>
 					<h2>Catalyst Commitment</h2> 
@@ -39,11 +75,6 @@
 					<button class="create-story-input-field"> Upload Photo</button>
 				</div>
 				<button id="submit-story-creation" ng-click="createStoryInDatabase()">Submit</button>
-			</section>
-
-			<!-- Featured View -->
-			<section id="featured-view" ng-show="current_view === 'featured'">
-				featured view
 			</section>
 
 			<!-- All View -->
