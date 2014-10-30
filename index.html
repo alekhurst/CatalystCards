@@ -8,6 +8,7 @@
 	</head>
 	<body ng-app="CatalystApp" ng-controller="CatalystController">
 		<main id="catalyst-content-wrapper"> 
+			
 			<!-- App Header -->
 			<nav>
 				<ul>
@@ -19,32 +20,32 @@
 			<button id="create-catalyst-button" ng-click="changeViews('create')">Create One!</button>
 			<header id="catalyst-types-header" >
 				<article class="catalyst-commitment-type">
-					<img src="images/catcard1.png">
-					<h1>Candor</h1>
+					<img src="images/candor-card.png">
+					<h1 class="catalyst-netapp-blue">Candor</h1>
 				</article>
 				<article class="catalyst-commitment-type">
-					<img src="images/catcard1.png">
-					<h1>Clarity</h1>
+					<img src="images/clarity-card.png">
+					<h1 class="catalyst-netapp-orange">Clarity</h1>
 				</article>
 				<article class="catalyst-commitment-type">
-					<img src="images/catcard1.png">
-					<h1>Ownership</h1>
+					<img src="images/ownership-card.png">
+					<h1 class="catalyst-netapp-purple">Ownership</h1>
 				</article>
 				<article class="catalyst-commitment-type">
-					<img src="images/catcard1.png">
-					<h1>Speed</h1>
+					<img src="images/speed-card.png">
+					<h1 class="catalyst-netapp-green">Speed</h1>
 				</article>
 			</header>
 
 			<!-- Featured View -->
-			<section id="featured-view" ng-show="current_view === 'featured'">
+			<section id="featured-view" ng-show="current_view === 'featured'" ng-cloak="current_view === 'featured'">
 				<article class="featured-story" ng-repeat="featured_story in featured_stories">
 					<div class="featured-story-contents">
-						<img class="featured-story-catalyst-card" ng-src="{{ featured_story.card_type }}">
+						<img class="featured-story-catalyst-card" ng-src="{{ featured_story.card_type_img }}">
 						<div class="featured-story-header">
-							<h2 class="featured-story-name"> {{ featured_story.name }} </h2>
-							<h4 class="featured-story-group"> {{ featured_story.group }} </h4>
-							<h4 class="featured-story-region"> {{ featured_story.region }} </h4>
+							<h2 class="featured-story-name" ng-class="assignTextColor(featured_story.card_type_id)"> {{ featured_story.name }} </h2>
+							<h4 class="featured-story-group" ng-class="assignTextColor(featured_story.card_type_id)"> {{ featured_story.group }} </h4>
+							<h4 class="featured-story-region" ng-class="assignTextColor(featured_story.card_type_id)"> {{ featured_story.region }} </h4>
 						</div>
 						<p class="featured-story-story"> {{ featured_story.story }} </p>
 					</div>
@@ -55,7 +56,7 @@
 			</section>
 
 			<!-- Story Creation View -->
-			<section id="story-creation-view" ng-show="current_view === 'create'">
+			<section id="story-creation-view" ng-show="current_view === 'create'" ng-cloak="current_view === 'create'">
 				<div id="story-creation-form">
 					<h2>First Name</h2> 
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.first_name">
@@ -78,12 +79,66 @@
 			</section>
 
 			<!-- All View -->
-			<section id="all-view" ng-show="current_view === 'all'">
-			    all view
+			<section id="all-view" ng-show="current_view === 'all'" ng-cloak="current_view === 'all'">
+			    <div id="search-and-filter">
+			    	<div>			    	
+				    	<input id="all-view-search" name="query_string" type="text" placeholder="Search Here" ng-model="search.$">
+				    	<h3>Filter By Region</h3>
+				    	<select class="all-view-dropdown" ng-model="search.region_id" ng-options="region.id as region.title for region in regions"></select>
+				    	<h3>Filter By Group</h3>
+				    	<select class="all-view-dropdown" ng-model="search.group_id" ng-options="group.id as group.title for group in groups"></select>
+				    	<h3>Filter By Card Type</h3>
+				    	<img src="images/candor-card.png">
+				    	<input class="card-type-filter" name="card_type" value="0" type="radio" ng-model="search.card_type_id">
+				    	<img src="images/clarity-card.png">
+				    	<input class="card-type-filter" name="card_type" value="1" type="radio" ng-model="search.card_type_id">
+				    	<img src="images/ownership-card.png">
+				    	<input class="card-type-filter" name="card_type" value="2" type="radio" ng-model="search.card_type_id">
+				    	<img src="images/speed-card.png">
+				    	<input class="card-type-filter" name="card_type" value="3" type="radio" ng-model="search.card_type_id">
+			    	</div>
+			    	<button id="reset-search-and-filter" ng-click="search = null"> Reset Filters</button>
+			    </div>
+			    <table id="results-table">
+			    	<col width="80px">
+			    	<col width="150px">
+			    	<col width="150px">
+			    	<col width="150px">
+			    	<thead>
+			    		<tr>
+					    	<th>Card</th>
+					    	<th>Name</th>
+					    	<th>Group</th>
+					    	<th>Region</th>
+				    	</tr>
+			    	</thead>
+			    	<tbody>
+				    	<tr ng-repeat="story in all_stories | filter:search" ng-click="createSelectedStory(story)">
+					    	<td> <img ng-src="{{ story.card_type_img }}"> </td>
+					    	<td> {{ story.name }} </td>
+					    	<td> {{ story.group }} </td>
+					    	<td> {{ story.region }} </td>
+				    	</tr>
+				    </tbody>
+			    </table>
+			    <article class="all-stories-selected-story" ng-show="all_stories_selected_story.name" ng-cloak="all_stories_selected_story.name">
+					<div class="all-stories-selected-story-contents">
+						<img class="all-stories-selected-story-catalyst-card" ng-if="all_stories_selected_story.name" ng-src="{{ all_stories_selected_story.card_type_img }}">
+						<div class="all-stories-selected-story-header">
+							<h2 class="all-stories-selected-story-name" ng-class="assignTextColor(all_stories_selected_story.card_type_id)"> {{ all_stories_selected_story.name }} </h2>
+							<h4 class="all-stories-selected-story-group" ng-class="assignTextColor(all_stories_selected_story.card_type_id)"> {{ all_stories_selected_story.group }} </h4>
+							<h4 class="all-stories-selected-story-region" ng-class="assignTextColor(all_stories_selected_story.card_type_id)"> {{ all_stories_selected_story.region }} </h4>
+						</div>
+						<p class="all-stories-selected-story-story"> {{ all_stories_selected_story.story }} </p>
+					</div>
+					<div class='all-stories-selected-story-photo-container'>
+						<img class="all-stories-selected-story-photo" ng-if="all_stories_selected_story.name" ng-src="{{ all_stories_selected_story.photo_url }}">
+					</div>
+				</article>
 			</section>
 
 			<!-- Map View -->
-			<section id="map-view" ng-show="current_view === 'map'">
+			<section id="map-view" ng-show="current_view === 'map'" ng-cloak="current_view === 'map'">
 				map view
 			</section>
 

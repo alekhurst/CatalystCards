@@ -1,3 +1,12 @@
+.catalyst-netapp-green {
+	color: #658D1B;
+} .catalyst-netapp-blue {
+	color: #0067C5;
+} .catalyst-netapp-purple {
+	color: #5F259F;
+} .catalyst-netapp-orange {
+	color: #E87722;
+}
 #catalyst-content-wrapper {
 	position: relative;
 	left: 50%;
@@ -43,14 +52,14 @@
 		top: 0px;
 		padding: 11px 15px;
 		border: none;
-		background-color: #84BD00;
+		background-color: #658D1B;
 		border-radius: 12px;
 		font-size: 17px;
 		color: white;
 	} #create-catalyst-button:focus {
 		outline: none;
 	} #create-catalyst-button:hover {
-		background-color: #658D1B
+		background-color: #84BD00;
 	}
 
 	#catalyst-types-header {
@@ -138,7 +147,7 @@
 			cursor: pointer;
 			padding: 11px 15px;
 			border: none;
-			background-color: #84BD00;
+			background-color: #658D1B;
 			border-radius: 12px;
 			font-size: 17px;
 			color: white;
@@ -155,6 +164,8 @@
 		font-size: 20px;
 		top: 210px;
 		width: 1000px;
+
+
 	}
 		.featured-story {
 			width: 1000px;
@@ -192,17 +203,14 @@
 					height: 75px;
 				}
 				.featured-story .featured-story-contents .featured-story-name {
-					color: #0067C5;
 					font-size: 30px;
 					margin: 0;
 				}
 				.featured-story .featured-story-contents .featured-story-group {
-					color: #84BD00;
 					font-size: 16px;
 					margin: 0;
 				}
 				.featured-story .featured-story-contents .featured-story-region {
-					color: #84BD00;
 					font-size: 16px;
 					margin: 0;
 				}
@@ -218,11 +226,190 @@
 
 	/* ---- BEGIN ALL VIEW ---- */
 	#all-view {
-		font-size: 20px;
-		position: relative;
-		top: 80px;
+		position: absolute;
+		top: 210px;
 		width: 1000px;
 	}
+		#search-and-filter {
+			float: left;
+			height: 170px;
+			width: 350px;
+			border-radius: 15px;
+			background-color: #edecec;
+			padding: 20px;
+		}
+			#search-and-filter #all-view-search {
+				width: 330px;
+				height: 30px;
+				font-size: 20px;
+				border-radius: 10px;
+				border: none;
+				padding-left: 20px;
+				color: #0067C5;
+				margin-bottom: 5px;
+			} #search-and-filter #all-view-search:focus {
+				outline: none;
+			}
+			#search-and-filter h3 {
+				width: 150px;
+				float: left;
+				margin: 7px 20px 0px 0px;
+				font-size: 15px;
+				clear: left;
+				color: #4f4f4f;
+				text-align: right;
+			}
+			#search-and-filter .all-view-dropdown {
+				width: 180px;
+				height: 20px;
+				float: left;
+				font-size: 15px;
+				padding: 0;
+				color: #4f4f4f;
+				border: none;
+				margin: 8px 0px;
+				background-color: #d5d4d4;
+				border-radius: 5px;
+			} #search-and-filter .all-view-dropdown:focus {
+				outline: none;
+			}
+			#search-and-filter .card-type-filter{
+				float: left;
+				margin: 11px 6px 0px 0px;
+				width: 13px;
+			}
+			#search-and-filter .card-type-filter:last-child {
+				margin-right: 0;
+			}
+			#search-and-filter img{
+				margin: 6px 4px 0px 0px;
+				height: 23px;
+				width: 23px;
+				float: left;
+			}
+			#reset-search-and-filter {
+				cursor: pointer;
+				display: block;
+				border-radius: 5px;
+				padding: 5px 10px;
+				border: none;
+				background-color: #d5d4d4;
+				float: right;
+				margin-top: 15px;
+				clear: both;
+			} #reset-search-and-filter:focus {
+				outline: none;
+			} #reset-search-and-filter:hover {
+				background-color: #bfbebe;
+			}
+		#results-table {
+			float: left;
+			width: 600px;
+			margin: 0px 0px 0px 10px;
+			background-color: #edecec;
+			border-radius: 10px;
+			padding: 5px 20px;
+			height: 210px;
+			color: #727272;
+		} 
+			#results-table thead {
+				background-color: #d5d4d4;
+				border-radius: 10px;
+				display: block;
+			} #results-table thead tr th:nth-child(1){
+				width: 50px;
+			} #results-table thead tr th:nth-child(2){
+				width: 202px;
+			} #results-table thead tr th:nth-child(3){
+				width: 152px;
+			} #results-table thead tr th:nth-child(4){
+				width: 130px;
+			}
+			#results-table tbody {
+				display: block;
+				height: 160px;
+				overflow-y: scroll;
+			}
+			#results-table tbody tr {
+				cursor: pointer;
+			} #results-table tbody tr:hover {
+				background-color: #6CACE4;
+			}
+			#results-table tbody tr td{
+				border: none;
+				padding: 0;
+				margin: 0;
+			} 
+			#results-table tbody tr td:nth-child(1) {
+				width: 50px;
+			} #results-table tbody tr td:nth-child(1) img{
+				height: 25px;
+				margin-left: 12px;
+				margin-top: 4px;
+			} #results-table tbody tr td:nth-child(2) {
+				width: 202px;
+			} #results-table tbody tr td:nth-child(3) {
+				width: 152px;
+			} #results-table tbody tr td:nth-child(4) {
+				width: 130px;
+			}
+		.all-stories-selected-story {
+			float: left;
+			margin-top: 20px;
+			width: 1000px;
+			height: 300px;
+			background-color: #edecec;
+			margin-bottom: 15px;
+			border-radius: 15px;
+		}
+			.all-stories-selected-story .all-stories-selected-story-photo-container {
+				float: left;
+				height: 300px;
+				width: 470px;
+				margin: 0;
+				padding: 0;
+			}
+				.all-stories-selected-story .all-stories-selected-story-photo {
+					float: right;
+					height: 300px;
+					max-width: 470px;
+					border-radius: 0px 15px 15px 0px;
+					margin: 0;
+					padding: 0;
+				}
+			.all-stories-selected-story-contents {
+				float: left;
+				padding: 40px;
+				width: 450px;
+				height: 220px;
+			}
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-catalyst-card {
+					float: left;
+					margin: 6px 10px 0px 0px;
+					padding: 0;
+					width: 75px;
+					height: 75px;
+				}
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-name {
+					font-size: 30px;
+					margin: 0;
+				}
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-group {
+					font-size: 16px;
+					margin: 0;
+				}
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-region {
+					font-size: 16px;
+					margin: 0;
+				}
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-story {
+					color: #4f4f4f;
+					font-size: 15px;
+					margin: 15px 0px 0px 0px;
+					height: 130px;
+					width: 400px;
+					overflow-y: scroll;
+				}
 	/* ---- END ALL VIEW ---- */
 
 	/* ---- BEGIN MAP VIEW ---- */
@@ -232,4 +419,5 @@
 		top: 80px;
 		width: 1000px;
 	}
-	/* ---- END MAP VIEW ---- */
+	/* ---- END MAP VIEW ---- */		
+		
