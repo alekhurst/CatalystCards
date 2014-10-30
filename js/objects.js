@@ -1,16 +1,15 @@
 window.catalyst_objects = {
-	groups : [
-		{ id: 0000, title: 'Total Company' }, 
-		{ id: 0001, title: 'ProdOps' }, 
-		{ id: 0002, title: 'HR' }, 
-		{ id: 0003, title: 'Corp Strategy' }, 
-		{ id: 0004, title: 'Finance/IT/WPR' }, 
-		{ id: 0005, title: 'Legal' }, 
-		{ id: 0006, title: 'Go-To-Market' }, 
-		{ id: 0007, title: 'Marketing' }, 
-		{ id: 0008, title: 'FieldOps' }, 
-		{ id: 0009, title: 'CSOps' }, 
-		{ id: 0010, title: 'GTMOps' }
+	groups : [ 
+		{ id: 0000, title: 'ProdOps' }, 
+		{ id: 0001, title: 'HR' }, 
+		{ id: 0002, title: 'Corp Strategy' }, 
+		{ id: 0003, title: 'Finance/IT/WPR' }, 
+		{ id: 0004, title: 'Legal' }, 
+		{ id: 0005, title: 'Go-To-Market' }, 
+		{ id: 0006, title: 'Marketing' }, 
+		{ id: 0007, title: 'FieldOps' }, 
+		{ id: 0008, title: 'CSOps' }, 
+		{ id: 0009, title: 'GTMOps' }
 	],
 	regions : [
 		{ id: 0000, title: 'APAC' }, 
