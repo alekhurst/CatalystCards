@@ -93,8 +93,8 @@
 		width: 1000px;
 	}
 		#story-creation-view #story-creation-form {
-			width: 900px;
-			margin: 0px 50px;
+			width: 1000px;
+			margin: 0;
 			padding: 15px 0px;
 			background-color: #edecec;
 			list-style-type: none;
@@ -103,7 +103,7 @@
 		}
 			#story-creation-view #story-creation-form h2 {
 				font-size: 15px;
-				width: 240px;
+				width: 300px;
 				text-align: right;
 				float: left;
 				color: #4f4f4f;
@@ -142,8 +142,9 @@
 			}
 		#story-creation-view #submit-story-creation {
 			float: right;
-			margin-right: 50px;
+			margin-right: 5px;
 			margin-top: 20px;
+			margin-bottom: 50px;
 			cursor: pointer;
 			padding: 11px 15px;
 			border: none;
@@ -154,74 +155,30 @@
 		} #story-creation-view #submit-story-creation:focus {
 			outline: none;
 		} #story-creation-view #submit-story-creation:hover {
-			background-color: #658D1B
+			background-color: #84BD00;
 		}		
+		#preview-creation-story-header {
+			cursor: pointer;
+			display: block;
+			padding: 5px 40px;
+			margin: 40px 0px 40px 0px;
+			color: #4f4f4f;
+			background-color: #edecec;
+			border-radius: 15px;
+		}
+		#preview-creation-story {
+			display: none;
+		}
 	/* ---- END CREATE STORY VIEW ---- */
 
 	/* ---- BEGIN FEATURED VIEW ---- */
+	/*   story styles at the bottom  */
 	#featured-view {
 		position: absolute;
 		font-size: 20px;
 		top: 210px;
 		width: 1000px;
-
-
 	}
-		.featured-story {
-			width: 1000px;
-			height: 300px;
-			background-color: #edecec;
-			margin-bottom: 15px;
-			border-radius: 15px;
-		}
-			.featured-story .featured-story-photo-container {
-				float: left;
-				height: 300px;
-				width: 470px;
-				margin: 0;
-				padding: 0;
-			}
-				.featured-story .featured-story-photo {
-					float: right;
-					height: 300px;
-					max-width: 470px;
-					border-radius: 0px 15px 15px 0px;
-					margin: 0;
-					padding: 0;
-				}
-			.featured-story-contents {
-				float: left;
-				padding: 40px;
-				width: 450px;
-				height: 220px;
-			}
-				.featured-story .featured-story-contents .featured-story-catalyst-card {
-					float: left;
-					margin: 6px 10px 0px 0px;
-					padding: 0;
-					width: 75px;
-					height: 75px;
-				}
-				.featured-story .featured-story-contents .featured-story-name {
-					font-size: 30px;
-					margin: 0;
-				}
-				.featured-story .featured-story-contents .featured-story-group {
-					font-size: 16px;
-					margin: 0;
-				}
-				.featured-story .featured-story-contents .featured-story-region {
-					font-size: 16px;
-					margin: 0;
-				}
-				.featured-story .featured-story-contents .featured-story-story {
-					color: #4f4f4f;
-					font-size: 15px;
-					margin: 15px 0px 0px 0px;
-					height: 130px;
-					width: 400px;
-					overflow-y: scroll;
-				}
 	/* ---- END FEATURED VIEW ---- */
 
 	/* ---- BEGIN ALL VIEW ---- */
@@ -355,71 +312,80 @@
 			} #results-table tbody tr td:nth-child(4) {
 				width: 130px;
 			}
-		.all-stories-selected-story {
+		#all-stories-selected-story {
 			float: left;
 			margin-top: 20px;
-			width: 1000px;
-			height: 300px;
-			background-color: #edecec;
-			margin-bottom: 15px;
-			border-radius: 15px;
 		}
-			.all-stories-selected-story .all-stories-selected-story-photo-container {
-				float: left;
-				height: 300px;
-				width: 470px;
-				margin: 0;
-				padding: 0;
-			}
-				.all-stories-selected-story .all-stories-selected-story-photo {
-					float: right;
-					height: 300px;
-					max-width: 470px;
-					border-radius: 0px 15px 15px 0px;
-					margin: 0;
-					padding: 0;
-				}
-			.all-stories-selected-story-contents {
-				float: left;
-				padding: 40px;
-				width: 450px;
-				height: 220px;
-			}
-				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-catalyst-card {
-					float: left;
-					margin: 6px 10px 0px 0px;
-					padding: 0;
-					width: 75px;
-					height: 75px;
-				}
-				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-name {
-					font-size: 30px;
-					margin: 0;
-				}
-				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-group {
-					font-size: 16px;
-					margin: 0;
-				}
-				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-region {
-					font-size: 16px;
-					margin: 0;
-				}
-				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-story {
-					color: #4f4f4f;
-					font-size: 15px;
-					margin: 15px 0px 0px 0px;
-					height: 130px;
-					width: 400px;
-					overflow-y: scroll;
-				}
 	/* ---- END ALL VIEW ---- */
 
 	/* ---- BEGIN MAP VIEW ---- */
 	#map-view {
-		font-size: 20px;
-		position: relative;
-		top: 80px;
+		position: absolute;
+		top: 210px;
 		width: 1000px;
 	}
+		#catalyst-map-canvas {
+			width: 1000px;
+			height: 500px;
+			border-radius: 15px;
+		}
 	/* ---- END MAP VIEW ---- */		
+
+	/* ---- BEGIN STORY STYLES ---- */
+	/* used for any story in the app */
+	.catalyst-story {
+		width: 1000px;
+		height: 300px;
+		background-color: #edecec;
+		margin-bottom: 15px;
+		border-radius: 15px;
+	}
+		.catalyst-story .catalyst-story-photo-container {
+			float: left;
+			height: 300px;
+			width: 470px;
+			margin: 0;
+			padding: 0;
+		}
+			.catalyst-story .catalyst-story-photo {
+				float: right;
+				height: 300px;
+				max-width: 470px;
+				border-radius: 0px 15px 15px 0px;
+				margin: 0;
+				padding: 0;
+			}
+		.catalyst-story-contents {
+			float: left;
+			padding: 40px;
+			width: 450px;
+			height: 220px;
+		}
+			.catalyst-story .catalyst-story-contents .catalyst-story-catalyst-card {
+				float: left;
+				margin: 6px 10px 0px 0px;
+				padding: 0;
+				width: 75px;
+				height: 75px;
+			}
+			.catalyst-story .catalyst-story-contents .catalyst-story-name {
+				font-size: 30px;
+				margin: 0;
+			}
+			.catalyst-story .catalyst-story-contents .catalyst-story-group {
+				font-size: 16px;
+				margin: 0;
+			}
+			.catalyst-story .catalyst-story-contents .catalyst-story-region {
+				font-size: 16px;
+				margin: 0;
+			}
+			.catalyst-story .catalyst-story-contents .catalyst-story-story {
+				color: #4f4f4f;
+				font-size: 15px;
+				margin: 15px 0px 0px 0px;
+				height: 130px;
+				width: 400px;
+				overflow-y: scroll;
+			}	
 		

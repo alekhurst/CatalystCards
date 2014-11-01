@@ -1,5 +1,7 @@
-$(document).ready(function() {
-
+$(document).ready( function() {
+	$('#preview-creation-story-header').click( function() {
+		$('#preview-creation-story').slideDown();
+	})
 })
 
 /**
@@ -8,7 +10,7 @@ $(document).ready(function() {
 var CleanSlateApp = angular.module('CatalystApp', []);
 CleanSlateApp.controller('CatalystController', function ($scope) {
 
-	/* Scope Variable Declaration */
+	/* ---- Scope Variable Declaration ---- */
 	$scope.story_creation_input = {};
 	$scope.current_view = '';
 	$scope.card_types = [];
@@ -17,9 +19,27 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 	$scope.all_stories = {};
 	$scope.all_stories_selected_story = {};	
 	$scope.featured_stories = {};
+	$scope.map;
 
 
-	/* Methods */
+	/* ---- Methods ---- */
+	/**
+	 * Called at the bottom of the controller, this initializes all $scope variables. 
+	 * The bottom portion of variables are initialized via prioritized asynchronous 
+	 * calls to optimize the end user experience.
+	 */
+	$scope.initializeScopeVariables = function() {
+		$scope.story_creation_input = { first_name : '', last_name : '', email : '', region : '', group : '', catalyst_commitment : '', story : '', photo_url : '' };
+		$scope.possible_views = ['featured', 'all', 'map', 'create', 'admin'];
+		$scope.current_view = 'featured',
+		$scope.card_types = window.catalyst_objects.card_types;
+		$scope.regions = window.catalyst_objects.regions;
+		$scope.groups = window.catalyst_objects.groups;
+
+		$scope.featured_stories = $scope.populateFeaturedStories();
+		$scope.all_stories = $scope.populateAllStories();
+		$scope.initializeMapView();
+	}
 
 	/**
 	 * Called when a user clicks "submit" after creating a Catalyst Story.
@@ -44,6 +64,8 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 	 */
 	$scope.changeViews = function(view) {
 		$scope.current_view = view;
+		if($scope.current_view === 'map') 
+			$scope.initializeMapView();
 	};
 
 	/**
@@ -152,6 +174,11 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 		}
 	};
 
+	/**
+	 * In all view when a user clicks on a story in the table on the right hand side, this
+	 * function takes the data from that table row and creates a detailed story view underneath
+	 * the table. 
+	 */
 	$scope.createSelectedStory = function(story) {
 		console.log(story);
 		$scope.all_stories_selected_story = {
@@ -166,15 +193,56 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 		console.log($scope.all_stories_selected_story)
 	}
 
-	/* Scope Variable Initialization */
-	$scope.story_creation_input = { first_name : '', last_name : '', email : '', region : '', group : '', catalyst_commitment : '', story : '', photo_url : '' };
-	$scope.possible_views = ['featured', 'all', 'map', 'create', 'admin'];
-	$scope.current_view = 'featured',
-	$scope.card_types = window.catalyst_objects.card_types;
-	$scope.regions = window.catalyst_objects.regions;
-	$scope.groups = window.catalyst_objects.groups;
+	/**
+	 * When the map view is selected, this initializes the map data, charts, and statistics
+	 */
+	$scope.initializeMapView = function() {
+		var marker_clusters;
+		var markers = [];
+		var mapOptions = {};
 
-	$scope.featured_stories = $scope.populateFeaturedStories();
-	$scope.all_stories = $scope.populateAllStories();
+		if($scope.map) { 
+			// Put this onto the event queue and resize/recenter the map 
+			// when the user re-enters the map view
+			setTimeout(function() {
+				google.maps.event.trigger($scope.map, 'resize')
+				$scope.map.setCenter(new google.maps.LatLng(25, 0));
+			}, 0);	
+		} else {
+			var mapOptions = {
+			    center: { lat: 25.00, lng: 0},
+			    zoom: 2,
+			};
 
+			function addMarkers(address, i) {
+				var geocoder = new google.maps.Geocoder();
+				geocoder.geocode( { 'address': address}, function(results, status) {
+				    if (status == google.maps.GeocoderStatus.OK) {
+				        markers[i] = new google.maps.Marker({
+				            map: $scope.map,
+				            position: results[0].geometry.location
+				        });
+				    } else {
+				        console.log('Geocode was not successful for the following reason: ' + status);
+				    }
+				});
+			}
+
+			$scope.map = new google.maps.Map(document.getElementById('catalyst-map-canvas'), mapOptions);
+			
+			for(i=0; i<$scope.all_stories.length; i++) {
+				var latLng = new google.maps.LatLng( 
+					$scope.regions[ $scope.all_stories[i].region_id ].location.lat, 
+					$scope.regions[ $scope.all_stories[i].region_id ].location.lng);
+				markers[i] = new google.maps.Marker({
+		            map: $scope.map,
+		            position: latLng
+		        });
+		    }
+
+			marker_clusters = new MarkerClusterer($scope.map, markers);
+		}
+	}
+
+	$scope.initializeScopeVariables(); // called when controller code is finished loading
 });
