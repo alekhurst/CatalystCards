@@ -7,8 +7,8 @@ $(document).ready( function() {
 /**
  * Begin Angular Code
  */
-var CleanSlateApp = angular.module('CatalystApp', []);
-CleanSlateApp.controller('CatalystController', function ($scope) {
+var CatalystApp = angular.module('CatalystApp', []);
+CatalystApp.controller('CatalystController', function ($scope) {
 
 	/* ---- Scope Variable Declaration ---- */
 	$scope.story_creation_input = {};
@@ -78,40 +78,19 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 	};
 
 	/**
-	 * Assigns a CSS class to change text color based on the catalyst card type
-	 */
-	$scope.assignTextColor = function(card_type) {
-		switch(card_type) {
-			case 0 : return 'catalyst-netapp-blue';
-			case 1 : return 'catalyst-netapp-orange';
-			case 2 : return 'catalyst-netapp-purple';
-			case 3 : return 'catalyst-netapp-green';
-		}
-	}
-
-	/**
 	 * Pulls the featured stories from the database on document load and returns them in a 
 	 * Format that is interpreted by the view to dipslay them under the 'Featured' tab
 	 */
 	$scope.populateFeaturedStories = function() {
-		// $.ajax({
-		//     url : "server/pull_featured_stories.php",
-		//     type: "POST",
-		//     data : "",
-		//     success: function(data) {
-		//     		// PLEASE RETURN DATA IN FOLLOWING JSON FORMAT 
-		//   		//  sample_featured_stories : [
-		// 			// 		{ id: 0000, first_name : 'Alek', last_name: 'Hurst', group : 0000, region : 0000, card_type : 0000, story : 'asdfasdfasdfasdfasdfasdf', photo_url : ''},
-		// 			// 		{ id: 0001, first_name : 'Alek', last_name: 'Hurst', group : 0000, region : 0000, card_type : 0000, story : 'asdfasdfasdfasdfasdfasdf', photo_url : ''},
-		// 			// 		{ id: 0002, first_name : 'Alek', last_name: 'Hurst', group : 0000, region : 0000, card_type : 0000, story : 'asdfasdfasdfasdfasdfasdf', photo_url : ''}
-		// 			//  ]
-		//         return parseSuccessData(data);
-		//     }
-		// });
-
-		// Test case
-		return parseSuccessData(window.catalyst_objects.sample_featured_stories);
-		// End test case
+		$.ajax({
+		    url : "server/pull_featured_stories.php",
+		    type: "POST",
+		    data : "",
+		    success: function(data) {
+		        $scope.featured_stories = parseSuccessData(JSON.parse(data));
+		        $scope.$apply();
+		    }
+		});
 
 		function parseSuccessData(data) {
 			var featured_stories = [];
@@ -123,8 +102,8 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 					name : data[i].first_name + ' ' + data[i].last_name,
 					group : $scope.groups[ data[i].group ].title,
 					region : $scope.regions[ data[i].region ].title,
-					card_type_img : $scope.card_types[ data[i].card_type ].img_url,
-					card_type_id : data[i].card_type,
+					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
+					card_type_id : data[i].commitment,
 					story : data[i].story,
 					photo_url : data[i].photo_url
 				}
@@ -154,7 +133,6 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 			var all_stories = [];
 			var story = {};
 			var i;
-
 			for( i=0; i<data.length; i++) {
 				story = {
 					name : data[i].first_name + ' ' + data[i].last_name,

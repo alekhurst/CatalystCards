@@ -12,15 +12,13 @@
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	$sql = "SELECT * FROM wp_catalyst_featured";
+	$featured_id = (string)$_POST['featured_id'];
+	$featured_id = strtotime($featured_id);
+	$featured_id = date("Y-m-d H:i:s", $featured_id);
+
+	$sql = "DELETE FROM wp_catalyst_featured WHERE uid= '$featured_id' ";
+	
 	$result = mysqli_query($conn, $sql);
 
-	$i = 0;
-	while($r = mysqli_fetch_assoc($result)) {
-	    $rows[$i] = $r;
-	    $i++;
-	}
-	
-	echo json_encode($rows);
 	$conn->close();
 ?>

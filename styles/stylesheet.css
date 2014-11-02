@@ -246,6 +246,7 @@
 	}
 		#search-and-filter {
 			float: left;
+			clear: both;
 			height: 170px;
 			width: 350px;
 			border-radius: 15px;
@@ -474,3 +475,257 @@
 					overflow-y: auto;
 				}
 	/* ---- END ALL VIEW ---- */
+
+/* ---- BEGIN ADMIN SPECIFIC STYLES ----*/
+#admin-featured-stories-container {
+	width: 1000px;
+	height: 640px;
+}
+	#admin-featured-stories-container h1 {
+		font-size: 28px;
+	} #admin-featured-stories-container h2 {
+		font-size: 22px;
+		margin-left: 25px;
+	}
+	#current-featured-stories-table {
+		float: left;
+		width: 1000px;
+		margin: 0px 0px 40px 0px;
+		background-color: #edecec;
+		border-radius: 10px;
+		padding: 5px 25px;
+		height: 195px;
+		color: #727272;
+	} 
+		#current-featured-stories-table thead {
+			background-color: #d5d4d4;
+			border-radius: 10px;
+			display: block;
+			width: 850px;
+			margin-left: 0px;
+		} #current-featured-stories-table thead tr th:nth-child(1){
+			width: 100px;
+		} #current-featured-stories-table thead tr th:nth-child(2){
+			width: 200px;
+		} #current-featured-stories-table thead tr th:nth-child(3){
+			width: 200px;
+		} #current-featured-stories-table thead tr th:nth-child(4){
+			width: 200px;
+		} #current-featured-stories-table thead tr th:nth-child(5){
+			width: 150px;
+		}
+		#current-featured-stories-table tbody {
+			display: block;
+			height: 145px;
+			max-height: 160px;
+			width: 900px;
+			overflow-y: auto;
+		}
+		#current-featured-stories-table tbody tr:hover {
+			background-color: #d2e6f6;
+		}
+		#current-featured-stories-table tbody tr td{
+			border: none;
+			padding: 0;
+			margin: 0;
+		} 
+		#current-featured-stories-table tbody tr td:nth-child(1) {
+			width: 100px;
+		} #current-featured-stories-table tbody tr td:nth-child(1) img{
+			height: 25px;
+			margin-left: 36px;
+			margin-top: 4px;
+		} #current-featured-stories-table tbody tr td:nth-child(2) {
+			width: 200px;
+		} #current-featured-stories-table tbody tr td:nth-child(3) {
+			width: 200px;
+		} #current-featured-stories-table tbody tr td:nth-child(4) {
+			width: 200px;
+		} #current-featured-stories-table tbody tr td:nth-child(5) {
+			width: 150px;
+		} #current-featured-stories-table tbody tr td:nth-child(5) button {
+			cursor: pointer;
+			background-color: #E87722;
+			margin-left: 30px;
+			color: #743b11;
+			border-radius:10px;
+			padding: 5px 15px;
+			border: none;
+		} #current-featured-stories-table tbody tr td:nth-child(5) button:hover {
+			background-color: #ec924e;
+		} #current-featured-stories-table tbody tr td:nth-child(5) button:focus {
+			outline: none;
+		}
+	#admin-open-add-featured-story {
+		float: left;
+		font-size: 15px;
+		cursor: pointer;
+		background-color: white;
+		border: solid 2px #658D1B;
+		margin: 20px;
+		color: #658D1B;
+		border-radius:10px;
+		padding: 10px 20px;
+	} #admin-open-add-featured-story:hover {
+		background-color: #e0e8d1;
+	} #admin-open-add-featured-story:focus {
+		outline: none;
+	}
+
+	#admin-search-and-filter {
+		float: left;
+		clear: both;
+		height: 170px;
+		width: 350px;
+		border-radius: 15px;
+		background-color: #edecec;
+		padding: 20px;
+	}
+		#admin-search-and-filter #all-view-search {
+			width: 330px;
+			height: 30px;
+			font-size: 20px;
+			border-radius: 10px;
+			border: none;
+			padding-left: 20px;
+			color: #0067C5;
+			margin-bottom: 5px;
+		} #admin-search-and-filter #all-view-search:focus {
+			outline: none;
+		}
+		#admin-search-and-filter h3 {
+			width: 150px;
+			float: left;
+			margin: 7px 20px 0px 0px;
+			font-size: 15px;
+			clear: left;
+			color: #4f4f4f;
+			text-align: right;
+		}
+		#admin-search-and-filter .all-view-dropdown {
+			width: 180px;
+			height: 20px;
+			float: left;
+			font-size: 15px;
+			padding: 0;
+			color: #4f4f4f;
+			border: none;
+			margin: 8px 0px;
+			background-color: #d5d4d4;
+			border-radius: 5px;
+		} #admin-search-and-filter .all-view-dropdown:focus {
+			outline: none;
+		}
+		#admin-search-and-filter .card-type-filter{
+			float: left;
+			margin: 11px 6px 0px 0px;
+			width: 13px;
+		}
+		#admin-search-and-filter .card-type-filter:last-child {
+			margin-right: 0;
+		}
+		#admin-search-and-filter img{
+			margin: 6px 4px 0px 0px;
+			height: 23px;
+			width: 23px;
+			float: left;
+		}
+		#reset-admin-search-and-filter {
+			cursor: pointer;
+			display: block;
+			border-radius: 5px;
+			padding: 5px 10px;
+			border: none;
+			background-color: #d5d4d4;
+			float: right;
+			margin-top: 15px;
+			clear: both;
+		} #reset-admin-search-and-filter:focus {
+			outline: none;
+		} #reset-admin-search-and-filter:hover {
+			background-color: #bfbebe;
+		}
+	#admin-results-table {
+		float: left;
+		width: 600px;
+		margin: 0px 0px 0px 10px;
+		background-color: #edecec;
+		border-radius: 10px;
+		padding: 5px 20px;
+		height: 210px;
+		color: #727272;
+	} 
+		#admin-results-table thead {
+			background-color: #d5d4d4;
+			border-radius: 10px;
+			display: block;
+			width: 550px;
+		} #admin-results-table thead tr th:nth-child(1){
+			width: 50px;
+		} #admin-results-table thead tr th:nth-child(2){
+			width: 202px;
+		} #admin-results-table thead tr th:nth-child(3){
+			width: 152px;
+		} #admin-results-table thead tr th:nth-child(4){
+			width: 130px;
+		}
+		#admin-results-table tbody {
+			display: block;
+			height: 160px;
+			max-height: 160px;
+			width: 550px;
+			overflow-y: auto;
+		} #admin-results-table tbody tr:hover {
+			background-color: #d2e6f6;
+		}
+		#admin-results-table tbody tr td{
+			border: none;
+			padding: 0;
+			margin: 0;
+		} 
+		#admin-results-table tbody tr .col-1 {
+			width: 50px;
+		} #admin-results-table tbody tr td:nth-child(1) img{
+			height: 25px;
+			margin-left: 12px;
+			margin-top: 4px;
+		} #admin-results-table tbody tr td:nth-child(2) {
+			width: 202px;
+		} #admin-results-table tbody tr td:nth-child(3) {
+			width: 152px;
+		} #admin-results-table tbody tr td:nth-child(4) {
+			width: 130px;
+		} #admin-results-table tbody tr td:nth-child(4) button {
+			cursor: pointer;
+			float: right;
+			background-color: #658D1B;
+			color: white;
+			padding: 3px 5px;
+			margin: 0;
+			border: none;
+		} #admin-results-table tbody tr td:nth-child(4) button:hover {
+			background-color: #749831;
+		} #admin-results-table tbody tr td:nth-child(4) button:focus {
+			outline: none;
+		}
+	#all-stories-selected-story {
+		float: left;
+		margin-top: 20px;
+	}
+
+#admin-stats {
+	display: block;
+	height: auto;
+	margin-top: 30px;
+}
+	#admin-stats h1 {
+		font-size: 28px;
+	} #admin-stats h2 {
+		font-size: 22px;
+		margin-left: 25px;
+	}
+
+	#admin-stats #stats h2 {
+		color: #658D1B;
+	}
+/* ---- END ADMIN SPECIFIC STYLES */

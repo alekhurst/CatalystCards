@@ -49,7 +49,7 @@
 						<p class="catalyst-story-story"> {{ featured_story.story }} </p>
 					</div>
 					<div class='catalyst-story-photo-container'>
-						<img class="catalyst-story-photo" ng-src="{{ featured_story.photo_url }}">
+						<img class="catalyst-story-photo" ng-if="featured_story.photo_url" ng-src="{{ featured_story.photo_url }}">
 					</div>
 				</article>
 			</section>
@@ -86,7 +86,7 @@
 						<p class="catalyst-story-story"> {{ story_creation_input.story }} </p>
 					</div>
 					<div class='catalyst-story-photo-container'>
-						<img class="catalyst-story-photo"> <!-- neeed to add ng-src when image uploads -->
+						<img class="catalyst-story-photo" ng-if="story_creation_input.photo_url" ng-src="story_creation_input.photo_url || null">
 					</div>
 				</article>
 				<button id="submit-story-creation" ng-click="createStoryInDatabase()">Submit</button>
