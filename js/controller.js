@@ -29,7 +29,7 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 	 * calls to optimize the end user experience.
 	 */
 	$scope.initializeScopeVariables = function() {
-		$scope.story_creation_input = { first_name : '', last_name : '', email : '', region : '', group : '', catalyst_commitment : '', story : '', photo_url : '' };
+		$scope.story_creation_input = { first_name : '', last_name : '', manager : '', region : '', group : '', catalyst_commitment : '', story : '', photo_url : '' };
 		$scope.possible_views = ['featured', 'all', 'map', 'create', 'admin'];
 		$scope.current_view = 'featured',
 		$scope.card_types = window.catalyst_objects.card_types;
@@ -38,7 +38,6 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 
 		$scope.featured_stories = $scope.populateFeaturedStories();
 		$scope.all_stories = $scope.populateAllStories();
-		$scope.initializeMapView();
 	}
 
 	/**
@@ -51,9 +50,19 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 		$.ajax({
 		    url : "server/create_story.php",
 		    type: "POST",
-		    data : $scope.story_creation_input,
+		    data : { 
+		    			first_name : $scope.story_creation_input.first_name,
+		    			last_name : $scope.story_creation_input.last_name,
+		    			region : $scope.story_creation_input.region,
+		    			group : $scope.story_creation_input.group,
+		    			commitment : $scope.story_creation_input.catalyst_commitment,
+		    			manager : $scope.story_creation_input.manager,
+		    			photo_url : $scope.story_creation_input.photo_url,
+		    			story : $scope.story_creation_input.story
+		    		},
 		    success: function(data) {
-		        $scope.current_view ='successful_story_creation'
+		        $scope.current_view ='successful_story_creation';
+		        $scope.populateAllStories();
 		    }
 		});
 	};
@@ -131,24 +140,15 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 	 * $scope.all_stories to be used in the 'All' view
 	 */
 	$scope.populateAllStories = function() {
-		// $.ajax({
-		//     url : "server/pull_all_stories.php",
-		//     type: "POST",
-		//     data : "",
-		//     success: function(data) {
-		//     		// PLEASE RETURN DATA IN FOLLOWING JSON FORMAT (same as featured stories)
-		//   		//  sample_featured_stories : [
-		// 			// 		{ id: 0000, first_name : 'Alek', last_name: 'Hurst', group : 0000, region : 0000, card_type : 0000, story : 'asdfasdfasdfasdfasdfasdf', photo_url : ''},
-		// 			// 		{ id: 0001, first_name : 'Alek', last_name: 'Hurst', group : 0000, region : 0000, card_type : 0000, story : 'asdfasdfasdfasdfasdfasdf', photo_url : ''},
-		// 			// 		{ id: 0002, first_name : 'Alek', last_name: 'Hurst', group : 0000, region : 0000, card_type : 0000, story : 'asdfasdfasdfasdfasdfasdf', photo_url : ''}
-		// 			//  ]
-		//         return parseSuccessData(data);
-		//     }
-		// });
-
-		// Test case
-		return parseSuccessData(window.catalyst_objects.sample_featured_stories);
-		// End test case
+		$.ajax({
+		    url : "server/pull_all_stories.php",
+		    type: "POST",
+		    data : "",
+		    success: function(data) {
+		        $scope.all_stories = parseSuccessData(JSON.parse(data));
+		        $scope.initializeMapView();
+		    }
+		});
 
 		function parseSuccessData(data) {
 			var all_stories = [];
@@ -162,8 +162,8 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 					group_id : data[i].group,
 					region : $scope.regions[ data[i].region ].title,
 					region_id : data[i].region,
-					card_type_img : $scope.card_types[ data[i].card_type ].img_url,
-					card_type_id : data[i].card_type,
+					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
+					card_type_id : data[i].commitment,
 					story : data[i].story,
 					photo_url : data[i].photo_url
 				}
@@ -180,7 +180,6 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 	 * the table. 
 	 */
 	$scope.createSelectedStory = function(story) {
-		console.log(story);
 		$scope.all_stories_selected_story = {
 			name : story.name,
 			group : story.group,
@@ -190,7 +189,6 @@ CleanSlateApp.controller('CatalystController', function ($scope) {
 			photo_url : story.photo_url,
 			story : story.story,
 		}
-		console.log($scope.all_stories_selected_story)
 	}
 
 	/**
