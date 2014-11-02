@@ -42,9 +42,9 @@
 					<div class="catalyst-story-contents">
 						<img class="catalyst-story-catalyst-card" ng-src="{{ featured_story.card_type_img }}">
 						<div class="catalyst-story-header">
-							<h2 class="catalyst-story-name" ng-class="assignTextColor(featured_story.card_type_id)"> {{ featured_story.name }} </h2>
-							<h4 class="catalyst-story-group" ng-class="assignTextColor(featured_story.card_type_id)"> {{ featured_story.group }} </h4>
-							<h4 class="catalyst-story-region" ng-class="assignTextColor(featured_story.card_type_id)"> {{ featured_story.region }} </h4>
+							<h2 class="catalyst-story-name" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[featured_story.card_type_id]"> {{ featured_story.name }} </h2>
+							<h4 class="catalyst-story-group" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[featured_story.card_type_id]"> {{ featured_story.group }} </h4>
+							<h4 class="catalyst-story-region" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[featured_story.card_type_id]"> {{ featured_story.region }} </h4>
 						</div>
 						<p class="catalyst-story-story"> {{ featured_story.story }} </p>
 					</div>
@@ -139,9 +139,9 @@
 					<div class="catalyst-story-contents">
 						<img class="catalyst-story-catalyst-card" ng-if="all_stories_selected_story.name" ng-src="{{ all_stories_selected_story.card_type_img }}">
 						<div class="catalyst-story-header">
-							<h2 class="catalyst-story-name" ng-class="assignTextColor(all_stories_selected_story.card_type_id)"> {{ all_stories_selected_story.name }} </h2>
-							<h4 class="catalyst-story-group" ng-class="assignTextColor(all_stories_selected_story.card_type_id)"> {{ all_stories_selected_story.group }} </h4>
-							<h4 class="catalyst-story-region" ng-class="assignTextColor(all_stories_selected_story.card_type_id)"> {{ all_stories_selected_story.region }} </h4>
+							<h2 class="catalyst-story-name" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[all_stories_selected_story.card_type_id]"> {{ all_stories_selected_story.name }} </h2>
+							<h4 class="catalyst-story-group" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[all_stories_selected_story.card_type_id]"> {{ all_stories_selected_story.group }} </h4>
+							<h4 class="catalyst-story-region" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[all_stories_selected_story.card_type_id]"> {{ all_stories_selected_story.region }} </h4>
 						</div>
 						<p class="catalyst-story-story"> {{ all_stories_selected_story.story }} </p>
 					</div>
