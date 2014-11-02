@@ -67,6 +67,7 @@
 		top: 70px;
 		margin: 0;
 		width: 1000px;
+		left: 0px;
 	}
 		#catalyst-types-header article {
 			float: left;
@@ -178,7 +179,63 @@
 		font-size: 20px;
 		top: 210px;
 		width: 1000px;
+		left: 0px;
 	}
+		.featured-story {
+			width: 1000px;
+			height: 300px;
+			background-color: #edecec;
+			margin-bottom: 15px;
+			border-radius: 15px;
+		}
+			.featured-story .featured-story-photo-container {
+				float: left;
+				height: 300px;
+				width: 470px;
+				margin: 0;
+				padding: 0;
+			}
+				.featured-story .featured-story-photo {
+					float: right;
+					height: 300px;
+					max-width: 470px;
+					border-radius: 0px 15px 15px 0px;
+					margin: 0;
+					padding: 0;
+				}
+			.featured-story-contents {
+				float: left;
+				padding: 40px;
+				width: 450px;
+				height: 220px;
+			}
+				.featured-story .featured-story-contents .featured-story-catalyst-card {
+					float: left;
+					margin: 6px 10px 0px 0px;
+					padding: 0;
+					width: 75px;
+					height: 75px;
+				}
+				.featured-story .featured-story-contents .featured-story-name {
+					font-size: 30px;
+					margin: 0;
+				}
+				.featured-story .featured-story-contents .featured-story-group {
+					font-size: 16px;
+					margin: 0;
+				}
+				.featured-story .featured-story-contents .featured-story-region {
+					font-size: 16px;
+					margin: 0;
+				}
+				.featured-story .featured-story-contents .featured-story-story {
+					color: #4f4f4f;
+					font-size: 15px;
+					margin: 15px 0px 0px 0px;
+					height: 130px;
+					width: 400px;
+					overflow-y: auto;
+				}
 	/* ---- END FEATURED VIEW ---- */
 
 	/* ---- BEGIN ALL VIEW ---- */
@@ -286,8 +343,9 @@
 			#results-table tbody {
 				display: block;
 				height: 160px;
+				max-height: 160px;
 				width: 550px;
-				overflow-y: scroll;
+				overflow-y: auto;
 			}
 			#results-table tbody tr {
 				cursor: pointer;
@@ -388,4 +446,31 @@
 				width: 400px;
 				overflow-y: scroll;
 			}	
-		
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-catalyst-card {
+					float: left;
+					margin: 6px 10px 0px 0px;
+					padding: 0;
+					width: 75px;
+					height: 75px;
+				}
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-name {
+					font-size: 30px;
+					margin: 0;
+				}
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-group {
+					font-size: 16px;
+					margin: 0;
+				}
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-region {
+					font-size: 16px;
+					margin: 0;
+				}
+				.all-stories-selected-story .all-stories-selected-story-contents .all-stories-selected-story-story {
+					color: #4f4f4f;
+					font-size: 15px;
+					margin: 15px 0px 0px 0px;
+					height: 130px;
+					width: 400px;
+					overflow-y: auto;
+				}
+	/* ---- END ALL VIEW ---- */
