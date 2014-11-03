@@ -33,12 +33,4 @@ window.catalyst_objects = {
 		{ id: 0002, title: 'Ownership', img_url: "images/ownership-card.png" }, 
 		{ id: 0003, title: 'Speed', img_url: "images/speed-card.png" }
 	],
-	sample_featured_stories : [
-		{ id: 0000, first_name : 'Kenneth', last_name: 'Bigler', group : 0000, region : 0001, card_type : 0000, story : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', photo_url : 'images/story_images/demo-image.jpg'},
-		{ id: 0001, first_name : 'Christopher', last_name: 'Christopher', group : 0007, region : 0001, card_type : 0001, story : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', photo_url : 'images/story_images/demo-image.jpg'},
-		{ id: 0002, first_name : 'Big', last_name: 'Poppa', group : 0001, region : 0005, card_type : 0002, story : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', photo_url : 'images/story_images/demo-image.jpg'},
-		{ id: 0002, first_name : 'Paksu', last_name: 'Mothafucka', group : 0004, region : 0003, card_type : 0003, story : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', photo_url : 'images/story_images/demo-image.jpg'},
-		{ id: 0002, first_name : 'Jesus', last_name: 'Christ', group : 0003, region : 0003, card_type : 0003, story : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', photo_url : 'images/story_images/demo-image.jpg'},
-
-	],
 }

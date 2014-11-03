@@ -84,7 +84,12 @@
 				<h1 class="catalyst-netapp-blue"> Statistics </h1>
 				<div id="stats">
 					<h2>Commitments per location</h2>
-					<h3>
+					<div class="stats-output">
+						<select class="create-story-input-field" ng-change="updateRegionStats()" ng-model="stats_view.current_region" ng-options="region.id as region.title for region in regions"></select>
+						<h3># of commitments: {{ stats_view.current_region_num_commitments }}</h3>
+						<h3>participation percentage: {{ stats_view.current_region_participation_percentage }}</h3>
+						<h3># of each type: Candor: {{ stats_view.current_region_candor_commitments }}, Clarity: {{ stats_view.current_region_clarity_commitments }}, Ownership: {{ stats_view.current_region_ownership_commitments }}, Speed: {{ stats_view.current_region_speed_commitments }}</h3>
+					</div>
 				</div>
 			</div>
 		</div>

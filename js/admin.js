@@ -6,6 +6,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 	$scope.groups = [];
 	$scope.all_stories = {};
 	$scope.featured_stories = {};
+	$scope.stats_view = {};
 
 	/* ---- Methods ---- */
 	/**
@@ -135,6 +136,39 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		    	$scope.populateFeaturedStories();    
 		    }
 		});
+	}
+
+	$scope.updateRegionStats = function() {
+		var i;
+		$scope.stats_view.current_region_num_commitments = 0;
+		$scope.stats_view.current_region_participation_percentage = 0;
+		$scope.stats_view.current_region_candor_commitments = 0;
+		$scope.stats_view.current_region_clarity_commitments = 0;
+		$scope.stats_view.current_region_ownership_commitments = 0;
+		$scope.stats_view.current_region_speed_commitments = 0;
+		
+		for(i=0; i<$scope.all_stories.length; i++) {
+			if( $scope.stats_view.current_region == $scope.all_stories[i].region_id) {
+
+				switch($scope.all_stories[i].card_type_id) {
+					case '0' :
+						$scope.stats_view.current_region_candor_commitments++;
+						break;
+					case '1' :
+						$scope.stats_view.current_region_clarity_commitments++;
+						break;
+					case '2' : 
+						$scope.stats_view.current_region_ownership_commitments++;
+						break;
+					case '3' :
+						$scope.stats_view.current_region_speed_commitments++;
+						break;
+				}	
+				$scope.stats_view.current_region_num_commitments++;
+			}
+			// need numbers for total employees in each location before this works
+			// $scope.stats_view.current_region_participation_percentage = $scope.stats_view.current_region_num_commitments / TOTAL
+		}
 	}
 
 	$scope.initializeScopeVariables();

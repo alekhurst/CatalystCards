@@ -11,13 +11,7 @@
 	if(mysqli_connect_errno()) {
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-
-	// $firstname = ucfirst(strip_tags(mysqli_real_escape_string($connection, $_POST['first_name'])));	
-	// $lastname = ucfirst(strip_tags(mysqli_real_escape_string($connection, $_POST['last_name'])));
-	// $region = strip_tags(mysqli_real_escape_string($connection, $_POST['region']));
-	// $group = strip_tags(mysqli_real_escape_string($connection, $_POST['group']));
-	// $commitment = sha1(strip_tags(mysqli_real_escape_string($connection, $_POST['card'])));
-
+	
 	$sql = "SELECT * FROM wp_catalyst_commitment";
 	$result = mysqli_query($conn, $sql);
 

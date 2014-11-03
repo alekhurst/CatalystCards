@@ -728,4 +728,7 @@
 	#admin-stats #stats h2 {
 		color: #658D1B;
 	}
+	#admin-stats #stats .stats-output {
+		margin-left: 70px;
+	}
 /* ---- END ADMIN SPECIFIC STYLES */
