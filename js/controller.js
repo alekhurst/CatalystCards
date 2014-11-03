@@ -1,7 +1,24 @@
 $(document).ready( function() {
 	$('#preview-creation-story-header').click( function() {
 		$('#preview-creation-story').slideDown();
-	})
+	});
+
+	$("#create-story-photo-upload").PictureCut({
+        InputOfImageDirectory       : "uploaded-image",
+        PluginFolderOnServer        : "/CatalystCards/lib/jquery.picture.cut/",
+        FolderOnServer              : "/CatalystCards/images/story_images/",
+        EnableCrop                  : true,
+        CropWindowStyle             : "Bootstrap",
+        CropModes				    : { widescreen: false, letterbox: true, free: false },
+        CropOrientation			    : false,
+        ImageButtonCSS			    : { border: "1px #CCC solid", width: 400, height: 300},
+        UploadedCallback			: function(data) {
+        	var scope = angular.element($("#create-story-photo-upload")).scope();
+		    scope.$apply(function(){
+		        scope.story_creation_input.photo_url = $("#uploaded-image").val();
+		    })
+        }
+    });
 })
 
 /**

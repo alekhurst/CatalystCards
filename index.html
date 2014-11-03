@@ -72,7 +72,8 @@
 					<h2>Share Your Story</h2> 
 					<textarea class="create-story-input-field" ng-model="story_creation_input.story"></textarea>
 					<h2>Attach a Photo</h2> 
-					<button class="create-story-input-field"> Upload Photo</button>
+					<h3 id="photo-upload-warning"> When uploading please press 'Crop' and then 'Finish' </h3>
+					<div class="create-story-input-field" id="create-story-photo-upload"> </div>
 				</div>
 				<h1 id="preview-creation-story-header"> Preview </h1>
 				<article id="preview-creation-story" class="catalyst-story">
@@ -86,7 +87,7 @@
 						<p class="catalyst-story-story"> {{ story_creation_input.story }} </p>
 					</div>
 					<div class='catalyst-story-photo-container'>
-						<img class="catalyst-story-photo" ng-if="story_creation_input.photo_url" ng-src="story_creation_input.photo_url || null">
+						<img class="catalyst-story-photo" ng-src="{{ story_creation_input.photo_url }}" >
 					</div>
 				</article>
 				<button id="submit-story-creation" ng-click="createStoryInDatabase()">Submit</button>
@@ -146,7 +147,7 @@
 						<p class="catalyst-story-story"> {{ all_stories_selected_story.story }} </p>
 					</div>
 					<div class='catalyst-story-photo-container'>
-						<img class="catalyst-story-photo" ng-if="all_stories_selected_story.name" ng-src="{{ all_stories_selected_story.photo_url }}">
+						<img class="catalyst-story-photo" ng-src="{{ all_stories_selected_story.photo_url }}">
 					</div>
 				</article>
 			</section>
@@ -158,13 +159,15 @@
 			</section>
 
 		</div>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-		<script src="lib/highcharts.js" type="text/javascript"></script>
 		<script src="js/controller.js" type="text/javascript"></script>
 		<script src="js/objects.js" type="text/javascript"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn3BEjYGEy9_OCSxT2Y-M6v68xUXN9gNo" type="text/javascript" ></script>
 		<script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js" ></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+		<script src="/CatalystCards/lib/jquery.picture.cut/src/jquery.picture.cut.js"></script>
     </script>
 	</body>
 </html>
