@@ -12,12 +12,12 @@ window.catalyst_objects = {
 		{ id: 0009, title: 'GTMOps' }
 	],
 	regions : [
-		{ id: 0000, title: 'Sunnyvale', location : { lat: 37.368830, lng: -122.036350} }, 
-		{ id: 0001, title: 'Bangalore', location : { lat: 12.971599, lng: 77.594563} },
-		{ id: 0002, title: 'RTP', location : { lat: 35.899168, lng: -78.863640} }, 
-		{ id: 0003, title: 'Winchita, KS', location : { lat: 37.688889, lng: -97.336111} },
-		{ id: 0004, title: 'Vienna, VA', location : { lat: 38.901223, lng: -77.265260} }, 
-		{ id: 0005, title: 'Schiphol Rijk', location : { lat: 37.368830, lng: -122.036350} },
+		{ id: 0000, title: 'Sunnyvale', location : { lat: 37.368830, lng: -122.036350}, employees: 1 }, 
+		{ id: 0001, title: 'Bangalore', location : { lat: 12.971599, lng: 77.594563}, employees: 1  },
+		{ id: 0002, title: 'RTP', location : { lat: 35.899168, lng: -78.863640}, employees: 1  }, 
+		{ id: 0003, title: 'Winchita, KS', location : { lat: 37.688889, lng: -97.336111}, employees: 1  },
+		{ id: 0004, title: 'Vienna, VA', location : { lat: 38.901223, lng: -77.265260}, employees: 1  }, 
+		{ id: 0005, title: 'Schiphol Rijk', location : { lat: 37.368830, lng: -122.036350}, employees: 1 },
 		{ id: 0006, title: 'Waltham, MA', location : { lat: 0, lng: 0} },
 		{ id: 0007, title: 'Pittsburgh, PA', location : { lat: 0, lng: 0} }, 
 		{ id: 0008, title: 'Munich', location : { lat: 0, lng: 0} },
