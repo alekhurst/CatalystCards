@@ -114,17 +114,19 @@ CatalystApp.controller('CatalystController', function ($scope) {
 			var story = {};
 			var i;
 
-			for( i=0; i<data.length; i++) {
-				story = {
-					name : data[i].first_name + ' ' + data[i].last_name,
-					group : $scope.groups[ data[i].group ].title,
-					region : $scope.regions[ data[i].region ].title,
-					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
-					card_type_id : data[i].commitment,
-					story : data[i].story,
-					photo_url : data[i].photo_url
+			if(data) {
+				for( i=0; i<data.length; i++) {
+					story = {
+						name : data[i].first_name + ' ' + data[i].last_name,
+						group : $scope.groups[ data[i].group ].title,
+						region : $scope.regions[ data[i].region ].title,
+						card_type_img : $scope.card_types[ data[i].commitment ].img_url,
+						card_type_id : data[i].commitment,
+						story : data[i].story,
+						photo_url : data[i].photo_url
+					}
+					featured_stories.push(story);
 				}
-				featured_stories.push(story);
 			}
 
 			return featured_stories;
