@@ -29,13 +29,16 @@ CatalystApp.controller('CatalystController', function ($scope) {
 
 	/* ---- Scope Variable Declaration ---- */
 	$scope.story_creation_input = {};
+	$scope.commitment_creation_input = {};
 	$scope.current_view = '';
 	$scope.card_types = [];
 	$scope.regions = [];
 	$scope.groups = [];
 	$scope.all_stories = {};
 	$scope.all_stories_selected_story = {};	
+	$scope.all_commitments = {};
 	$scope.featured_stories = {};
+	$scope.current_story = {};
 	$scope.map;
 
 
@@ -47,6 +50,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	 */
 	$scope.initializeScopeVariables = function() {
 		$scope.story_creation_input = { first_name : '', last_name : '', manager : '', region : '', group : '', catalyst_commitment : '', story : '', photo_url : '' };
+		$scope.commitment_creation_input = { first_name : '', last_name : '', region : '', group : '', catalyst_commitment : '' };
 		$scope.possible_views = ['featured', 'all', 'map', 'create', 'admin'];
 		$scope.current_view = 'featured',
 		$scope.card_types = window.catalyst_objects.card_types;
@@ -55,6 +59,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 
 		$scope.featured_stories = $scope.populateFeaturedStories();
 		$scope.all_stories = $scope.populateAllStories();
+		$scope.all_commitments = $scope.populateAllCommitments();
 	}
 
 	/**
@@ -78,11 +83,41 @@ CatalystApp.controller('CatalystController', function ($scope) {
 		    			story : $scope.story_creation_input.story
 		    		},
 		    success: function(data) {
-		        $scope.current_view ='successful_story_creation';
+		        $scope.current_view ='featured';
 		        $scope.populateAllStories();
 		    }
 		});
 	};
+
+	/**
+	 * Called after a user is finished adding a commitment to the database
+	 */
+	$scope.createCommitmentInDatabase = function() {
+		$scope.all_commitments.push( {name : $scope.commitment_creation_input.first_name + ' ' + $scope.commitment_creation_input.last_name,
+					group : $scope.groups[ $scope.commitment_creation_input.group ].title || 'HR',
+					group_id : $scope.commitment_creation_input.group || 0,
+					region : $scope.regions[ $scope.commitment_creation_input.region ].title || 'Sunnyvale',
+					region_id : $scope.commitment_creation_input.region || 0,
+					card_type_img : $scope.card_types[ $scope.commitment_creation_input.catalyst_commitment ].img_url,
+					card_type_id : $scope.commitment_creation_input.catalyst_commitment});
+
+		$.ajax({
+		    url : "server/create_commitment.php",
+		    type: "POST",
+		    data : { 
+		    			first_name : $scope.commitment_creation_input.first_name,
+		    			last_name : $scope.commitment_creation_input.last_name,
+		    			region : $scope.commitment_creation_input.region,
+		    			group : $scope.commitment_creation_input.group,
+		    			commitment : $scope.commitment_creation_input.catalyst_commitment,
+		    		},
+		    success: function(data) {
+		        $scope.current_view ='map';
+		        $scope.initializeMapView();
+		        $scope.$apply();
+		    }
+		});
+	}
 
 	/**
 	 * Called whenever a user clicks on a navigation component or the create
@@ -105,6 +140,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 		    data : "",
 		    success: function(data) {
 		        $scope.featured_stories = parseSuccessData(JSON.parse(data));
+		        $scope.current_story = $scope.featured_stories[0];
 		        $scope.$apply();
 		    }
 		});
@@ -135,7 +171,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 
 	/**
 	 * Pulls all of the stories from the database and stores them into the scope variable
-	 * $scope.all_stories to be used in the 'All' view
+	 * $scope.all_stories to be used in the 'Stories' view
 	 */
 	$scope.populateAllStories = function() {
 		$.ajax({
@@ -144,7 +180,8 @@ CatalystApp.controller('CatalystController', function ($scope) {
 		    data : "",
 		    success: function(data) {
 		        $scope.all_stories = parseSuccessData(JSON.parse(data));
-		        $scope.initializeMapView();
+		        $scope.all_stories_selected_story = $scope.all_stories[0];
+		        $scope.$apply();
 		    }
 		});
 
@@ -172,11 +209,60 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	};
 
 	/**
+	 * Pulls all of the commitments from the database and stores them into the scope variable
+	 * $scope.all_commitments to be used in the 'Commitments' view
+	 */
+	$scope.populateAllCommitments = function() {
+		$.ajax({
+		    url : "server/pull_all_commitments.php",
+		    type: "POST",
+		    data : "",
+		    success: function(data) {
+		        $scope.all_commitments = parseSuccessData(JSON.parse(data));
+		        $scope.$apply();
+		        $scope.initializeMapView();
+		    }
+		});
+
+		function parseSuccessData(data) {
+			var all_commitments = [];
+			var story = {};
+			var i;
+			for( i=0; i<data.length; i++) {
+				story = {
+					name : data[i].first_name + ' ' + data[i].last_name,
+					group : $scope.groups[ data[i].group ].title,
+					group_id : data[i].group,
+					region : $scope.regions[ data[i].region ].title,
+					region_id : data[i].region,
+					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
+					card_type_id : data[i].commitment,
+				}
+				all_commitments.push(story);
+			}
+
+			return all_commitments;
+		}
+	}
+
+	/**
 	 * In all view when a user clicks on a story in the table on the right hand side, this
 	 * function takes the data from that table row and creates a detailed story view underneath
 	 * the table. 
 	 */
-	$scope.createSelectedStory = function(story) {
+	$scope.setCurrentStory = function(story) {
+		$scope.current_story = {
+			name : story.name,
+			group : story.group,
+			region : story.region,
+			card_type_img : story.card_type_img,
+			card_type_id : story.card_type_id,
+			photo_url : story.photo_url,
+			story : story.story,
+		}
+	}
+
+	$scope.setCurrentlyViewingAllStory = function(story) {
 		$scope.all_stories_selected_story = {
 			name : story.name,
 			group : story.group,
@@ -225,10 +311,10 @@ CatalystApp.controller('CatalystController', function ($scope) {
 
 			$scope.map = new google.maps.Map(document.getElementById('catalyst-map-canvas'), mapOptions);
 			
-			for(i=0; i<$scope.all_stories.length; i++) {
+			for(i=0; i<$scope.all_commitments.length; i++) {
 				var latLng = new google.maps.LatLng( 
-					$scope.regions[ $scope.all_stories[i].region_id ].location.lat, 
-					$scope.regions[ $scope.all_stories[i].region_id ].location.lng);
+					$scope.regions[ $scope.all_commitments[i].region_id ].location.lat, 
+					$scope.regions[ $scope.all_commitments[i].region_id ].location.lng);
 				markers[i] = new google.maps.Marker({
 		            map: $scope.map,
 		            position: latLng

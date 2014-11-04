@@ -11,13 +11,13 @@
 			<!-- App Header -->
 			<nav>
 				<ul>
-					<li ng-class="{'selected-catalyst-nav': current_view === 'featured'}" ng-click="changeViews('featured')">Featured</li>
-					<li ng-class="{'selected-catalyst-nav': current_view === 'all'}" ng-click="changeViews('all')">All</li>
-					<li ng-class="{'selected-catalyst-nav': current_view === 'map'}" ng-click="changeViews('map')">Map</li>
+					<li ng-class="{'selected-catalyst-nav': current_view === 'featured'}" ng-click="changeViews('featured')">Stories</li>
+					<li ng-class="{'selected-catalyst-nav': current_view === 'map'}" ng-click="changeViews('map')">Commitments</li>
 				</ul>
 			</nav>
-			<button id="create-catalyst-button" ng-click="changeViews('create')">Create One!</button>
-			<header id="catalyst-types-header" >
+			<button id="create-story-button" ng-click="changeViews('create')" ng-show="current_view ==='featured'">Create a Story!</button>
+			<button id="make-commitment-button" ng-click="changeViews('create_commitment')" ng-show="current_view === 'map'">Create a Commitment</button>
+			<header id="catalyst-types-header">
 				<article class="catalyst-commitment-type">
 					<img src="images/candor-card.png">
 					<h1 class="catalyst-netapp-blue">Candor</h1>
@@ -38,64 +38,33 @@
 
 			<!-- Featured View -->
 			<section id="featured-view" ng-show="current_view === 'featured'" ng-cloak="current_view === 'featured'">
-				<article class="catalyst-story" ng-repeat="featured_story in featured_stories">
+				<h1>Featured</h1>
+				<div id="mini-featured-stories">
+					<button ng-repeat="featured_story in featured_stories" ng-click="setCurrentStory(featured_story)">
+						<img ng-src="{{featured_story.card_type_img}}"> 
+						<h3 ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[featured_story.card_type_id]">{{featured_story.name}}</h3>
+					</button>
+				</div>
+				<article id="current-featured-story" class="catalyst-story">
 					<div class="catalyst-story-contents">
-						<img class="catalyst-story-catalyst-card" ng-src="{{ featured_story.card_type_img }}">
+						<img class="catalyst-story-catalyst-card" ng-src="{{ current_story.card_type_img }}">
 						<div class="catalyst-story-header">
-							<h2 class="catalyst-story-name" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[featured_story.card_type_id]"> {{ featured_story.name }} </h2>
-							<h4 class="catalyst-story-group" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[featured_story.card_type_id]"> {{ featured_story.group }} </h4>
-							<h4 class="catalyst-story-region" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[featured_story.card_type_id]"> {{ featured_story.region }} </h4>
+							<h2 class="catalyst-story-name" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[current_story.card_type_id]"> {{ current_story.name }} </h2>
+							<h4 class="catalyst-story-group" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[current_story.card_type_id]"> {{ current_story.group }} </h4>
+							<h4 class="catalyst-story-region" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[current_story.card_type_id]"> {{ current_story.region }} </h4>
 						</div>
-						<p class="catalyst-story-story"> {{ featured_story.story }} </p>
+						<p class="catalyst-story-story"> {{ current_story.story }} </p>
 					</div>
 					<div class='catalyst-story-photo-container'>
-						<img class="catalyst-story-photo" ng-if="featured_story.photo_url" ng-src="{{ featured_story.photo_url }}">
+						<img class="catalyst-story-photo" ng-if="current_story.photo_url" ng-src="{{ current_story.photo_url }}">
 					</div>
 				</article>
 				<h2 style="color:red" ng-hide="featured_stories.length"> There are currently no featured stories, please add one using the admin application </h2>
-			</section>
-
-			<!-- Story Creation View -->
-			<section id="story-creation-view" ng-show="current_view === 'create'" ng-cloak="current_view === 'create'">
-				<div id="story-creation-form">
-					<h2>Catalyst Commitment</h2> 
-					<select class="create-story-input-field" ng-model="story_creation_input.catalyst_commitment" ng-options="card_type.id as card_type.title for card_type in card_types"></select>
-					<h2>First Name</h2> 
-					<input class="create-story-input-field" type="text" ng-model="story_creation_input.first_name">
-					<h2>Last Name</h2> 
-					<input class="create-story-input-field" type="text" ng-model="story_creation_input.last_name">
-					<h2>Region</h2> 
-					<select class="create-story-input-field" ng-model="story_creation_input.region" ng-options="region.id as region.title for region in regions"></select>
-					<h2>Group </h2> 
-					<select class="create-story-input-field" ng-model="story_creation_input.group" ng-options="group.id as group.title for group in groups"></select>
-					<h2>Manager</h2> 
-					<input class="create-story-input-field" type="text" ng-model="story_creation_input.manager">
-					<h2>Share Your Story</h2> 
-					<textarea class="create-story-input-field" ng-model="story_creation_input.story"></textarea>
-					<h2>Attach a Photo</h2> 
-					<h3 id="photo-upload-warning"> When uploading please press 'Crop' and then 'Finish' </h3>
-					<div class="create-story-input-field" id="create-story-photo-upload"> </div>
-				</div>
-				<h1 id="preview-creation-story-header"> Preview </h1>
-				<article id="preview-creation-story" class="catalyst-story">
-					<div class="catalyst-story-contents">
-						<img class="catalyst-story-catalyst-card" ng-src="{{ card_types[ story_creation_input.catalyst_commitment ].img_url }}"> 
-						<div class="catalyst-story-header">
-							<h2 class="catalyst-story-name" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[story_creation_input.catalyst_commitment]"> {{ story_creation_input.first_name }} {{ story_creation_input.last_name }} </h2>
-							<h4 class="catalyst-story-group" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[story_creation_input.catalyst_commitment]"> {{ groups[story_creation_input.group ].title }} </h4>
-							<h4 class="catalyst-story-region" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[story_creation_input.catalyst_commitment]"> {{ regions[story_creation_input.region].title }} </h4>
-						</div>
-						<p class="catalyst-story-story"> {{ story_creation_input.story }} </p>
-					</div>
-					<div class='catalyst-story-photo-container'>
-						<img class="catalyst-story-photo" ng-src="{{ story_creation_input.photo_url }}" >
-					</div>
-				</article>
-				<button id="submit-story-creation" ng-click="createStoryInDatabase()">Submit</button>
+				<h1>All</h1>
 			</section>
 
 			<!-- All View -->
-			<section id="all-view" ng-show="current_view === 'all'" ng-cloak="current_view === 'all'">
+			<section id="all-view" ng-cloak="current_view === 'featured'" ng-show="current_view === 'featured'">
 			    <div id="search-and-filter">
 			    	<div>			    	
 				    	<input id="all-view-search" name="query_string" type="text" placeholder="Search Here" ng-model="search.$">
@@ -129,7 +98,7 @@
 				    	</tr>
 			    	</thead>
 			    	<tbody>
-				    	<tr style="height:0px" ng-repeat="story in all_stories | filter:search" ng-click="createSelectedStory(story)">
+				    	<tr style="height:0px" ng-repeat="story in all_stories | filter:search" ng-click="setCurrentlyViewingAllStory(story)">
 					    	<td> <img ng-src="{{ story.card_type_img }}"> </td>
 					    	<td> {{ story.name }} </td>
 					    	<td> {{ story.group }} </td>
@@ -151,12 +120,69 @@
 						<img class="catalyst-story-photo" ng-src="{{ all_stories_selected_story.photo_url }}">
 					</div>
 				</article>
+				<button id="create-story-button-2" ng-click="changeViews('create')" ng-show="current_view ==='featured'">Create a Story!</button>
+			</section>
+
+			<!-- Story Creation View -->
+			<section id="story-creation-view" ng-show="current_view === 'create'" ng-cloak="current_view === 'create'">
+				<div id="story-creation-form">
+					<h2>Catalyst Commitment</h2> 
+					<select class="create-story-input-field" ng-model="story_creation_input.catalyst_commitment" ng-options="card_type.id as card_type.title for card_type in card_types"></select>
+					<h2>First Name</h2> 
+					<input class="create-story-input-field" type="text" ng-model="story_creation_input.first_name">
+					<h2>Last Name</h2> 
+					<input class="create-story-input-field" type="text" ng-model="story_creation_input.last_name">
+					<h2>Region</h2> 
+					<select class="create-story-input-field" ng-model="story_creation_input.region" ng-options="region.id as region.title for region in regions"></select>
+					<h2>Group </h2> 
+					<select class="create-story-input-field" ng-model="story_creation_input.group" ng-options="group.id as group.title for group in groups"></select>
+					<h2>Manager</h2> 
+					<input class="create-story-input-field" type="text" ng-model="story_creation_input.manager">
+					<h2>Share Your Story</h2> 
+					<textarea class="create-story-input-field" ng-model="story_creation_input.story"></textarea>
+					<h2>Attach a Photo</h2> 
+					<h3 id="photo-upload-warning"> For best results please press 'Crop' one time, and then press 'Finish' </h3>
+					<div class="create-story-input-field" id="create-story-photo-upload"> </div>
+				</div>
+				<h1 id="preview-creation-story-header"> Preview </h1>
+				<article id="preview-creation-story" class="catalyst-story">
+					<div class="catalyst-story-contents">
+						<img class="catalyst-story-catalyst-card" ng-src="{{ card_types[ story_creation_input.catalyst_commitment ].img_url }}"> 
+						<div class="catalyst-story-header">
+							<h2 class="catalyst-story-name" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[story_creation_input.catalyst_commitment]"> {{ story_creation_input.first_name }} {{ story_creation_input.last_name }} </h2>
+							<h4 class="catalyst-story-group" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[story_creation_input.catalyst_commitment]"> {{ groups[story_creation_input.group ].title }} </h4>
+							<h4 class="catalyst-story-region" ng-class="{0:'catalyst-netapp-blue', 1:'catalyst-netapp-orange', 2:'catalyst-netapp-purple', 3:'catalyst-netapp-green'}[story_creation_input.catalyst_commitment]"> {{ regions[story_creation_input.region].title }} </h4>
+						</div>
+						<p class="catalyst-story-story"> {{ story_creation_input.story }} </p>
+					</div>
+					<div class='catalyst-story-photo-container'>
+						<img class="catalyst-story-photo" ng-src="{{ story_creation_input.photo_url }}" >
+					</div>
+				</article>
+				<button id="submit-story-creation" ng-click="createStoryInDatabase()">Submit</button>
 			</section>
 
 			<!-- Map View -->
 			<section id="map-view" ng-show="current_view === 'map'" ng-cloak="current_view === 'map'">
 				<div ng-show="current_view === 'map'" id="catalyst-map-canvas">
 				</div>
+			</section>
+
+			<!-- Commitment Creation View -->
+			<section id="commitment-creation-view" ng-show="current_view === 'create_commitment'" ng-cloak="current_view === 'create_commitment'">
+				<div id="commitment-creation-form">
+					<h2>Catalyst Commitment</h2> 
+					<select class="create-commitment-input-field" ng-model="commitment_creation_input.catalyst_commitment" ng-options="card_type.id as card_type.title for card_type in card_types"></select>
+					<h2>First Name</h2> 
+					<input class="create-commitment-input-field" type="text" ng-model="commitment_creation_input.first_name">
+					<h2>Last Name</h2> 
+					<input class="create-commitment-input-field" type="text" ng-model="commitment_creation_input.last_name">
+					<h2>Region</h2> 
+					<select class="create-commitment-input-field" ng-model="commitment_creation_input.region" ng-options="region.id as region.title for region in regions"></select>
+					<h2>Group </h2> 
+					<select class="create-commitment-input-field" ng-model="commitment_creation_input.group" ng-options="group.id as group.title for group in groups"></select>
+				</div>
+				<button id="submit-commitment-creation" ng-click="createCommitmentInDatabase()">Submit</button>
 			</section>
 
 		</div>
