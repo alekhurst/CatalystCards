@@ -15,6 +15,20 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 	$scope.featured_storiesc = {};
 	$scope.stats_viewc = {};
 
+	$scope.card_typesg = [];
+	$scope.regionsg = [];
+	$scope.groupsg = [];
+	$scope.all_storiesg = {};
+	$scope.featured_storiesg = {};
+	$scope.stats_viewg = {};
+
+	$scope.card_typesgc = [];
+	$scope.regionsgc = [];
+	$scope.groupsgc = [];
+	$scope.all_storiesgc = {};
+	$scope.featured_storiesgc = {};
+	$scope.stats_viewgc = {};
+
 	/* ---- Methods ---- */
 	/**
 	 * Called at the bottom of the controller, this initializes all $scope variables. 
@@ -28,7 +42,9 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 
 		$scope.featured_stories = $scope.populateFeaturedStories(); 
 		$scope.all_stories = $scope.populateAllStories();
+		$scope.all_storiesg = $scope.populateAllStories();
 		$scope.all_storiesc = $scope.populateAllCatalysts();
+		$scope.all_storiesgc = $scope.populateAllCatalysts();
 	};
 
 	/**
@@ -250,7 +266,6 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		}
 	}
 
-/* This is a start if we decide to add stats based on the groups rather than just the regions
 	$scope.updateGroupStats = function() {
 		var i;
 		$scope.stats_viewg.current_group_num_commitments = 0;
@@ -260,10 +275,10 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.stats_viewg.current_group_ownership_commitments = 0;
 		$scope.stats_viewg.current_group_speed_commitments = 0;
 		
-		for(i=0; i<$scope.all_stories.length; i++) {
-			if( $scope.stats_viewg.current_group == $scope.all_stories[i].region_id) {
+		for(i=0; i<$scope.all_storiesg.length; i++) {
+			if( $scope.stats_viewg.current_group == $scope.all_storiesg[i].group_id) {
 
-				switch($scope.all_stories[i].card_type_id) {
+				switch($scope.all_storiesg[i].card_type_id) {
 					case '0' :
 						$scope.stats_viewg.current_group_candor_commitments++;
 						break;
@@ -293,10 +308,10 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.stats_viewgc.current_group_ownership_commitments = 0;
 		$scope.stats_viewgc.current_group_speed_commitments = 0;
 		
-		for(i=0; i<$scope.all_stories.length; i++) {
-			if( $scope.stats_viewgc.current_group == $scope.all_stories[i].region_id) {
+		for(i=0; i<$scope.all_storiesgc.length; i++) {
+			if( $scope.stats_viewgc.current_group == $scope.all_storiesgc[i].group_id) {
 
-				switch($scope.all_stories[i].card_type_id) {
+				switch($scope.all_storiesgc[i].card_type_id) {
 					case '0' :
 						$scope.stats_viewgc.current_group_candor_commitments++;
 						break;
@@ -318,4 +333,4 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 	}
 
 	$scope.initializeScopeVariables();
-}); */
+});
