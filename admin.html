@@ -100,6 +100,20 @@
 							<h3>Participation %: {{ stats_viewc.current_region_participation_percentage }}</h3>
 							<h3><img src="images/candor-card.png"> {{ stats_viewc.current_region_candor_commitments }}<img src="images/clarity-card.png"> {{ stats_viewc.current_region_clarity_commitments }}<img src="images/ownership-card.png"> {{ stats_viewc.current_region_ownership_commitments }} <img src="images/speed-card.png">{{ stats_viewc.current_region_speed_commitments }}</h3>
 						</div>
+						<div class="a-stat-container">
+							<h2>Stories per group</h2>
+							<select class="create-story-input-field" ng-change="updateGroupStats()" ng-model="stats_viewg.current_group" ng-options="group.id as group.title for group in groups"></select>
+							<h3>Stories: {{ stats_viewg.current_group_num_commitments }}</h3>
+							<h3>Participation %: {{ stats_viewg.current_group_participation_percentage }}</h3>
+							<h3><img src="images/candor-card.png"> {{ stats_viewg.current_group_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_viewg.current_group_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_viewg.current_group_ownership_commitments }} <img src="images/speed-card.png"> {{ stats_viewg.current_group_speed_commitments }}</h3>
+						</div>
+						<div class="a-stat-container">
+							<h2>Commitments per group</h2>
+							<select class="create-story-input-field" ng-change="updateGroupStatsC()" ng-model="stats_viewgc.current_group" ng-options="region.id as region.title for region in groups"></select>
+							<h3>Commitments: {{ stats_viewgc.current_group_num_commitments }}</h3>
+							<h3>Participation %: {{ stats_viewgc.current_group_participation_percentage }}</h3>
+							<h3> <img src="images/candor-card.png"> {{ stats_viewgc.current_group_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_viewgc.current_group_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_viewgc.current_group_ownership_commitments }} <img src="images/speed-card.png">{{ stats_viewgc.current_group_speed_commitments }} </h3>
+						</div>
 					</div>
 				</div>
 			</div>

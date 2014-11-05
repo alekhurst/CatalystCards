@@ -42,9 +42,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 
 		$scope.featured_stories = $scope.populateFeaturedStories(); 
 		$scope.all_stories = $scope.populateAllStories();
-		$scope.all_storiesg = $scope.populateAllStories();
 		$scope.all_storiesc = $scope.populateAllCatalysts();
-		$scope.all_storiesgc = $scope.populateAllCatalysts();
 	};
 
 	/**
@@ -275,10 +273,10 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.stats_viewg.current_group_ownership_commitments = 0;
 		$scope.stats_viewg.current_group_speed_commitments = 0;
 		
-		for(i=0; i<$scope.all_storiesg.length; i++) {
-			if( $scope.stats_viewg.current_group == $scope.all_storiesg[i].group_id) {
+		for(i=0; i<$scope.all_stories.length; i++) {
+			if( $scope.stats_viewg.current_group == $scope.all_stories[i].group_id) {
 
-				switch($scope.all_storiesg[i].card_type_id) {
+				switch($scope.all_stories[i].card_type_id) {
 					case '0' :
 						$scope.stats_viewg.current_group_candor_commitments++;
 						break;
@@ -308,10 +306,10 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.stats_viewgc.current_group_ownership_commitments = 0;
 		$scope.stats_viewgc.current_group_speed_commitments = 0;
 		
-		for(i=0; i<$scope.all_storiesgc.length; i++) {
-			if( $scope.stats_viewgc.current_group == $scope.all_storiesgc[i].group_id) {
+		for(i=0; i<$scope.all_storiesc.length; i++) {
+			if( $scope.stats_viewgc.current_group == $scope.all_storiesc[i].group_id) {
 
-				switch($scope.all_storiesgc[i].card_type_id) {
+				switch($scope.all_storiesc[i].card_type_id) {
 					case '0' :
 						$scope.stats_viewgc.current_group_candor_commitments++;
 						break;
