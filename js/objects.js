@@ -17,7 +17,7 @@ window.catalyst_objects = {
 		{ id: 002, title: 'RTP', location : { lat: 35.899168, lng: -78.863640}, employees: 1939, region: 'AMERICAS' }, 
 		{ id: 003, title: 'Winchita, KS', location : { lat: 37.688889, lng: -97.336111}, employees: 737, region: 'AMERICAS' },
 		{ id: 004, title: 'Vienna, VA', location : { lat: 38.901223, lng: -77.265260}, employees: 337, region: 'AMERICAS' }, 
-		{ id: 005, title: 'Schiphol Rijk', location : { lat: 37.368830, lng: -122.036350}, employees: 331, region: 'EMEA' },
+		{ id: 005, title: 'Schiphol Rijk', location : { lat: 0, lng: 0}, employees: 331, region: 'EMEA' },
 		{ id: 006, title: 'Waltham, MA', location : { lat: 0, lng: 0}, employees: 281, region: '' },
 		{ id: 007, title: 'Pittsburgh, PA', location : { lat: 0, lng: 0}, employees: 257, region: '' }, 
 		{ id: 008, title: 'Munich', location : { lat: 0, lng: 0}, employees: 256, region: '' },
