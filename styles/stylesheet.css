@@ -122,7 +122,7 @@
 	#story-creation-view {
 		position: absolute;
 		font-size: 20px;
-		top: 210px;
+		top: 60px;
 		width: 1000px;
 	}
 		#story-creation-view #story-creation-form {
@@ -219,7 +219,7 @@
 	#commitment-creation-view {
 		position: absolute;
 		font-size: 20px;
-		top: 210px;
+		top: 60px;
 		width: 1000px;
 	}
 		#commitment-creation-view #commitment-creation-form {
@@ -306,6 +306,7 @@
 			display: none;
 		}
 	/* ---- END COMMITMENT CREATION VIEW ---- */
+
 	/* ---- BEGIN FEATURED VIEW ---- */
 	/*   story styles at the bottom  */
 	#featured-view {
@@ -363,14 +364,14 @@
 				}
 		#current-featured-story {
 			margin-top: 4px;
-			margin-bottom: 40px;
+			margin-bottom: 30px;
 		}
 	/* ---- END FEATURED VIEW ---- */
 
 	/* ---- BEGIN ALL VIEW ---- */
 	#all-view {
 		position: absolute;
-		top:  552px;
+		top:  542px;
 		width: 1000px;
 	}
 		#search-and-filter {
