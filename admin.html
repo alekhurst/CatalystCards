@@ -87,7 +87,7 @@
 					<h2>Commitments per location</h2>
 					<div class="stats-output">
 						<select class="create-story-input-field" ng-change="updateRegionStats()" ng-model="stats_view.current_region" ng-options="region.id as region.title for region in regions"></select>
-						<h3>Commitments: {{ stats_view.current_region_num_commitments }}</h3>
+						<h3>Stories: {{ stats_view.current_region_num_commitments }}</h3>
 						<h3>Participation %: {{ stats_view.current_region_participation_percentage }}</h3>
 						<h3>Candor: {{ stats_view.current_region_candor_commitments }}, Clarity: {{ stats_view.current_region_clarity_commitments }}, Ownership: {{ stats_view.current_region_ownership_commitments }}, Speed: {{ stats_view.current_region_speed_commitments }}</h3>
 
