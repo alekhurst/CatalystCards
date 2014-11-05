@@ -16,8 +16,8 @@
 				</ul>
 			</nav>
 			<button id="create-story-button" ng-click="changeViews('create')" ng-show="current_view ==='featured'">Create a Story!</button>
-			<button id="make-commitment-button" ng-click="changeViews('create_commitment')" ng-show="current_view === 'map'">Create a Commitment</button>
-			<header id="catalyst-types-header">
+			<button id="make-commitment-button" ng-click="changeViews('create_commitment')" ng-show="current_view === 'map'">Create a Commitment!</button>
+			<header id="catalyst-types-header" ng-show="current_view === 'map'" ng-cloak="current_view === 'map'">
 				<article class="catalyst-commitment-type">
 					<img src="images/candor-card.png">
 					<h1 class="catalyst-netapp-blue">Candor</h1>

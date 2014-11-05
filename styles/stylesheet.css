@@ -51,14 +51,14 @@
 		top: 0px;
 		padding: 11px 15px;
 		border: none;
-		background-color: #658D1B;
+		background-color: #C8102E;
 		border-radius: 12px;
 		font-size: 17px;
 		color: white;
 	} #create-story-button:focus {
 		outline: none;
 	} #create-story-button:hover {
-		background-color: #84BD00;
+		background-color: #AF272F;
 	}
 	#create-story-button-2 {
 		cursor: pointer;
@@ -67,7 +67,7 @@
 		bottom: -90px;
 		padding: 11px 15px;
 		border: none;
-		background-color: #658D1B;
+		background-color: #C8102E;
 		border-radius: 12px;
 		font-size: 17px;
 		color: white;
@@ -75,7 +75,7 @@
 	} #create-story-button-2:focus {
 		outline: none;
 	} #create-story-button-2:hover {
-		background-color: #84BD00;
+		background-color: #AF272F;
 	}
 	#make-commitment-button {
 		cursor: pointer;
@@ -84,14 +84,14 @@
 		top: 0px;
 		padding: 11px 15px;
 		border: none;
-		background-color: #658D1B;
+		background-color: #C8102E;
 		border-radius: 12px;
 		font-size: 17px;
 		color: white;
 	} #make-commitment-button:focus {
 		outline: none;
 	} #make-commitment-button:hover {
-		background-color: #84BD00;
+		background-color: #AF272F;
 	}
 
 	#catalyst-types-header {
@@ -311,7 +311,7 @@
 	#featured-view {
 		position: absolute;
 		font-size: 20px;
-		top: 190px;
+		top: 50px;
 		width: 1000px;
 		left: 0px;
 	}
@@ -321,7 +321,7 @@
 			text-align: center;
 			background-color: #edecec;
 			border-radius: 15px;
-			margin: 15px 0px;
+			margin: 10px 0px;
 		}
 		#mini-featured-stories {
 			width: 100%;
@@ -362,7 +362,7 @@
 					margin: 10px 10px 0px 0px;
 				}
 		#current-featured-story {
-			margin-top: 10px;
+			margin-top: 4px;
 			margin-bottom: 40px;
 		}
 	/* ---- END FEATURED VIEW ---- */
@@ -370,7 +370,7 @@
 	/* ---- BEGIN ALL VIEW ---- */
 	#all-view {
 		position: absolute;
-		top: 710px;
+		top:  552px;
 		width: 1000px;
 	}
 		#search-and-filter {

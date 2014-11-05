@@ -68,7 +68,6 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	 * function calls an AJAX function to do the creation in the database.
 	 */
 	$scope.createStoryInDatabase = function() {
-		console.log($scope.story_creation_input)
 		$.ajax({
 		    url : "server/create_story.php",
 		    type: "POST",
@@ -93,14 +92,6 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	 * Called after a user is finished adding a commitment to the database
 	 */
 	$scope.createCommitmentInDatabase = function() {
-		$scope.all_commitments.push( {name : $scope.commitment_creation_input.first_name + ' ' + $scope.commitment_creation_input.last_name,
-					group : $scope.groups[ $scope.commitment_creation_input.group ].title || 'HR',
-					group_id : $scope.commitment_creation_input.group || 0,
-					region : $scope.regions[ $scope.commitment_creation_input.region ].title || 'Sunnyvale',
-					region_id : $scope.commitment_creation_input.region || 0,
-					card_type_img : $scope.card_types[ $scope.commitment_creation_input.catalyst_commitment ].img_url,
-					card_type_id : $scope.commitment_creation_input.catalyst_commitment});
-
 		$.ajax({
 		    url : "server/create_commitment.php",
 		    type: "POST",
