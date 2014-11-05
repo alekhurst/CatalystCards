@@ -84,17 +84,22 @@
 			<div id="admin-stats">
 				<h1 class="catalyst-netapp-blue"> Statistics </h1>
 				<div id="stats">
-					<h2>Commitments per location</h2>
+					
 					<div class="stats-output">
-						<select class="create-story-input-field" ng-change="updateRegionStats()" ng-model="stats_view.current_region" ng-options="region.id as region.title for region in regions"></select>
-						<h3>Stories: {{ stats_view.current_region_num_commitments }}</h3>
-						<h3>Participation %: {{ stats_view.current_region_participation_percentage }}</h3>
-						<h3>Candor: {{ stats_view.current_region_candor_commitments }}, Clarity: {{ stats_view.current_region_clarity_commitments }}, Ownership: {{ stats_view.current_region_ownership_commitments }}, Speed: {{ stats_view.current_region_speed_commitments }}</h3>
-
-						<select class="create-story-input-field" ng-change="updateRegionStatsC()" ng-model="stats_viewc.current_region" ng-options="region.id as region.title for region in regions"></select>
-						<h3>Commitments: {{ stats_viewc.current_region_num_commitments }}</h3>
-						<h3>Participation %: {{ stats_viewc.current_region_participation_percentage }}</h3>
-						<h3>Candor: {{ stats_viewc.current_region_candor_commitments }}, Clarity: {{ stats_viewc.current_region_clarity_commitments }}, Ownership: {{ stats_viewc.current_region_ownership_commitments }}, Speed: {{ stats_viewc.current_region_speed_commitments }}</h3>
+						<div class="a-stat-container">
+							<h2>Stories per location</h2>
+							<select class="create-story-input-field" ng-change="updateRegionStats()" ng-model="stats_view.current_region" ng-options="region.id as region.title for region in regions"></select>
+							<h3>Stories: {{ stats_view.current_region_num_commitments }}</h3>
+							<h3>Participation %: {{ stats_view.current_region_participation_percentage }}</h3>
+							<h3><img src="images/candor-card.png"> {{ stats_view.current_region_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_view.current_region_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_view.current_region_ownership_commitments }} <img src="images/speed-card.png"> {{ stats_view.current_region_speed_commitments }}</h3>
+						</div>
+						<div class="a-stat-container">
+							<h2>Commitments per location</h2>
+							<select class="create-story-input-field" ng-change="updateRegionStatsC()" ng-model="stats_viewc.current_region" ng-options="region.id as region.title for region in regions"></select>
+							<h3>Commitments: {{ stats_viewc.current_region_num_commitments }}</h3>
+							<h3>Participation %: {{ stats_viewc.current_region_participation_percentage }}</h3>
+							<h3><img src="images/candor-card.png"> {{ stats_viewc.current_region_candor_commitments }}<img src="images/clarity-card.png"> {{ stats_viewc.current_region_clarity_commitments }}<img src="images/ownership-card.png"> {{ stats_viewc.current_region_ownership_commitments }} <img src="images/speed-card.png">{{ stats_viewc.current_region_speed_commitments }}</h3>
+						</div>
 					</div>
 				</div>
 			</div>

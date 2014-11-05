@@ -860,13 +860,30 @@
 		font-size: 28px;
 	} #admin-stats h2 {
 		font-size: 22px;
-		margin-left: 25px;
+		margin-left: 0px;
 	}
 
 	#admin-stats #stats h2 {
 		color: #658D1B;
+		margin-left: 10px;
 	}
 	#admin-stats #stats .stats-output {
 		margin-left: 70px;
 	}
+
+	.a-stat-container {
+		background-color: #edecec;
+		padding: 10px;
+		border-radius: 10px;
+		margin-bottom: 10px;
+	}
+		.a-stat-container h3 {
+			margin-left: 40px;
+		}
+		.a-stat-container select {
+			margin-left: 40px;
+		}
+		.a-stat-container img {
+			width: 30px;
+		}
 /* ---- END ADMIN SPECIFIC STYLES */

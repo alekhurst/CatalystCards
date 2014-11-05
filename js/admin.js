@@ -37,7 +37,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 	 */
 	$scope.populateAllCatalysts = function() {
 		$.ajax({
-		    url : "server/pull_all_commitment.php",
+		    url : "server/pull_all_commitments.php",
 		    type: "POST",
 		    data : "",
 		    success: function(data) {
@@ -226,10 +226,10 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.stats_viewc.current_region_ownership_commitments = 0;
 		$scope.stats_viewc.current_region_speed_commitments = 0;
 		
-		for(i=0; i<$scope.all_stories.length; i++) {
-			if( $scope.stats_viewc.current_region == $scope.all_stories[i].region_id) {
+		for(i=0; i<$scope.all_storiesc.length; i++) {
+			if( $scope.stats_viewc.current_region == $scope.all_storiesc[i].region_id) {
 
-				switch($scope.all_stories[i].card_type_id) {
+				switch($scope.all_storiesc[i].card_type_id) {
 					case '0' :
 						$scope.stats_viewc.current_region_candor_commitments++;
 						break;
