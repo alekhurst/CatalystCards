@@ -94,6 +94,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	 * Called after a user is finished adding a commitment to the database
 	 */
 	$scope.createCommitmentInDatabase = function() {
+		console.log($scope.commitment_creation_input)
 		$.ajax({
 		    url : "server/create_commitment.php",
 		    type: "POST",
