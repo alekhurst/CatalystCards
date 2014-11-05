@@ -206,7 +206,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.stats_view.current_region_clarity_commitments = 0;
 		$scope.stats_view.current_region_ownership_commitments = 0;
 		$scope.stats_view.current_region_speed_commitments = 0;
-		
+
 		for(i=0; i<$scope.all_stories.length; i++) {
 			if( $scope.stats_view.current_region == $scope.all_stories[i].region_id) {
 
@@ -226,9 +226,8 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				}	
 				$scope.stats_view.current_region_num_commitments++;
 			}
-			// need numbers for total employees in each location before this works
-			//$scope.stats_view.current_region_participation_percentage = $scope.stats_view.current_region_num_commitments / TOTAL;
 		}
+		$scope.stats_view.current_region_participation_percentage = (( $scope.stats_view.current_region_num_commitments / $scope.regions[$scope.stats_view.current_region].employees ) * 100).toFixed(2);
 	}
 
 	$scope.updateRegionStatsC = function() {
@@ -259,9 +258,8 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				}	
 				$scope.stats_viewc.current_region_num_commitments++;
 			}
-			// need numbers for total employees in each location before this works
-			//$scope.stats_viewc.current_region_participation_percentage = $scope.stats_viewc.current_region_num_commitments / TOTAL;
 		}
+		$scope.stats_viewc.current_region_participation_percentage = (( $scope.stats_viewc.current_region_num_commitments / $scope.regions[$scope.stats_viewc.current_region].employees ) * 100).toFixed(2);
 	}
 
 	$scope.updateGroupStats = function() {
@@ -292,9 +290,8 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				}	
 				$scope.stats_viewg.current_group_num_commitments++;
 			}
-			// need numbers for total employees in each location before this works
-			//$scope.stats_viewg.current_group_participation_percentage = $scope.stats_viewg.current_group_num_commitments / TOTAL;
 		}
+		$scope.stats_viewg.current_region_participation_percentage = (( $scope.stats_viewg.current_region_num_commitments / $scope.regions[$scope.stats_viewg.current_region].employees ) * 100).toFixed(2);
 	}
 
 	$scope.updateGroupStatsC = function() {
@@ -325,9 +322,8 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				}	
 				$scope.stats_viewgc.current_group_num_commitments++;
 			}
-			// need numbers for total employees in each location before this works
-			//$scope.stats_viewgc.current_group_participation_percentage = $scope.stats_viewgc.current_group_num_commitments / TOTAL;
 		}
+		$scope.stats_viewcg.current_region_participation_percentage = (( $scope.stats_viewcg.current_region_num_commitments / $scope.regions[$scope.stats_viewcg.current_region].employees ) * 100).toFixed(2);
 	}
 
 	$scope.initializeScopeVariables();
