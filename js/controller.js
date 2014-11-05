@@ -37,6 +37,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	$scope.all_stories = {};
 	$scope.all_stories_selected_story = {};	
 	$scope.all_commitments = {};
+	$scope.commitments_type_count = [];
 	$scope.featured_stories = {};
 	$scope.current_story = {};
 	$scope.map;
@@ -51,6 +52,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	$scope.initializeScopeVariables = function() {
 		$scope.story_creation_input = { first_name : '', last_name : '', manager : '', region : '', group : '', catalyst_commitment : '', story : '', photo_url : '' };
 		$scope.commitment_creation_input = { first_name : '', last_name : '', region : '', group : '', catalyst_commitment : '' };
+		$scope.commitments_type_count = [0, 0, 0, 0];
 		$scope.possible_views = ['featured', 'all', 'map', 'create', 'admin'];
 		$scope.current_view = 'featured',
 		$scope.card_types = window.catalyst_objects.card_types;
@@ -217,10 +219,12 @@ CatalystApp.controller('CatalystController', function ($scope) {
 
 		function parseSuccessData(data) {
 			var all_commitments = [];
-			var story = {};
+			var commitment = {};
 			var i;
 			for( i=0; i<data.length; i++) {
-				story = {
+				$scope.commitments_type_count[data[i].commitment]++;
+				
+				commitment = {
 					name : data[i].first_name + ' ' + data[i].last_name,
 					group : $scope.groups[ data[i].group ].title,
 					group_id : data[i].group,
@@ -229,7 +233,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
 					card_type_id : data[i].commitment,
 				}
-				all_commitments.push(story);
+				all_commitments.push(commitment);
 			}
 
 			return all_commitments;

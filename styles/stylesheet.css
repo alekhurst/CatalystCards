@@ -113,8 +113,16 @@
 				height: 100px;
 				margin: 0;
 			}
+			#catalyst-types-header article .commitment-type-count {
+				display: inline;
+				position: relative;
+				bottom: 40px;
+				left: 5px;
+				font-size: 30px;
+			}
 			#catalyst-types-header article h1 {
-				font-size: 15px;
+				position: relative;
+				font-size: 18px;
 				margin: 0;
 			} 
 	/* ---- END APP NAV --- */
@@ -510,7 +518,7 @@
 	/* ---- BEGIN MAP VIEW ---- */
 	#map-view {
 		position: absolute;
-		top: 210px;
+		top: 215px;
 		width: 1000px;
 	}
 		#catalyst-map-canvas {
