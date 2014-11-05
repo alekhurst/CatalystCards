@@ -250,71 +250,72 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		}
 	}
 
+/* This is a start if we decide to add stats based on the groups rather than just the regions
 	$scope.updateGroupStats = function() {
 		var i;
-		$scope.stats_viewc.current_group_num_commitments = 0;
-		$scope.stats_viewc.current_group_participation_percentage = 0;
-		$scope.stats_viewc.current_group_candor_commitments = 0;
-		$scope.stats_viewc.current_group_clarity_commitments = 0;
-		$scope.stats_viewc.current_group_ownership_commitments = 0;
-		$scope.stats_viewc.current_group_speed_commitments = 0;
+		$scope.stats_viewg.current_group_num_commitments = 0;
+		$scope.stats_viewg.current_group_participation_percentage = 0;
+		$scope.stats_viewg.current_group_candor_commitments = 0;
+		$scope.stats_viewg.current_group_clarity_commitments = 0;
+		$scope.stats_viewg.current_group_ownership_commitments = 0;
+		$scope.stats_viewg.current_group_speed_commitments = 0;
 		
 		for(i=0; i<$scope.all_stories.length; i++) {
-			if( $scope.stats_viewc.current_group == $scope.all_stories[i].region_id) {
+			if( $scope.stats_viewg.current_group == $scope.all_stories[i].region_id) {
 
 				switch($scope.all_stories[i].card_type_id) {
 					case '0' :
-						$scope.stats_viewc.current_group_candor_commitments++;
+						$scope.stats_viewg.current_group_candor_commitments++;
 						break;
 					case '1' :
-						$scope.stats_viewc.current_group_clarity_commitments++;
+						$scope.stats_viewg.current_group_clarity_commitments++;
 						break;
 					case '2' : 
-						$scope.stats_viewc.current_group_ownership_commitments++;
+						$scope.stats_viewg.current_group_ownership_commitments++;
 						break;
 					case '3' :
-						$scope.stats_viewc.current_group_speed_commitments++;
+						$scope.stats_viewg.current_group_speed_commitments++;
 						break;
 				}	
-				$scope.stats_viewc.current_group_num_commitments++;
+				$scope.stats_viewg.current_group_num_commitments++;
 			}
 			// need numbers for total employees in each location before this works
-			//$scope.stats_viewc.current_group_participation_percentage = $scope.stats_viewc.current_group_num_commitments / TOTAL;
+			//$scope.stats_viewg.current_group_participation_percentage = $scope.stats_viewg.current_group_num_commitments / TOTAL;
 		}
 	}
 
 	$scope.updateGroupStatsC = function() {
 		var i;
-		$scope.stats_viewc.current_group_num_commitments = 0;
-		$scope.stats_viewc.current_group_participation_percentage = 0;
-		$scope.stats_viewc.current_group_candor_commitments = 0;
-		$scope.stats_viewc.current_group_clarity_commitments = 0;
-		$scope.stats_viewc.current_group_ownership_commitments = 0;
-		$scope.stats_viewc.current_group_speed_commitments = 0;
+		$scope.stats_viewgc.current_group_num_commitments = 0;
+		$scope.stats_viewgc.current_group_participation_percentage = 0;
+		$scope.stats_viewgc.current_group_candor_commitments = 0;
+		$scope.stats_viewgc.current_group_clarity_commitments = 0;
+		$scope.stats_viewgc.current_group_ownership_commitments = 0;
+		$scope.stats_viewgc.current_group_speed_commitments = 0;
 		
 		for(i=0; i<$scope.all_stories.length; i++) {
-			if( $scope.stats_viewc.current_group == $scope.all_stories[i].region_id) {
+			if( $scope.stats_viewgc.current_group == $scope.all_stories[i].region_id) {
 
 				switch($scope.all_stories[i].card_type_id) {
 					case '0' :
-						$scope.stats_viewc.current_group_candor_commitments++;
+						$scope.stats_viewgc.current_group_candor_commitments++;
 						break;
 					case '1' :
-						$scope.stats_viewc.current_group_clarity_commitments++;
+						$scope.stats_viewgc.current_group_clarity_commitments++;
 						break;
 					case '2' : 
-						$scope.stats_viewc.current_group_ownership_commitments++;
+						$scope.stats_viewgc.current_group_ownership_commitments++;
 						break;
 					case '3' :
-						$scope.stats_viewc.current_group_speed_commitments++;
+						$scope.stats_viewgc.current_group_speed_commitments++;
 						break;
 				}	
-				$scope.stats_viewc.current_group_num_commitments++;
+				$scope.stats_viewgc.current_group_num_commitments++;
 			}
 			// need numbers for total employees in each location before this works
-			//$scope.stats_viewc.current_group_participation_percentage = $scope.stats_viewc.current_group_num_commitments / TOTAL;
+			//$scope.stats_viewgc.current_group_participation_percentage = $scope.stats_viewgc.current_group_num_commitments / TOTAL;
 		}
 	}
 
 	$scope.initializeScopeVariables();
-});
+}); */
