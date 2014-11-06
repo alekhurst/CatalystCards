@@ -518,7 +518,7 @@
 	/* ---- BEGIN MAP VIEW ---- */
 	#map-view {
 		position: absolute;
-		top: 215px;
+		top: 230px;
 		width: 1000px;
 	}
 		#catalyst-map-canvas {

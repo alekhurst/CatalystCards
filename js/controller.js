@@ -41,7 +41,8 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	$scope.featured_stories = {};
 	$scope.current_story = {};
 	$scope.map;
-
+	$scope.markers = [];
+	$scope.marker_image = {};
 
 	/* ---- Methods ---- */
 	/**
@@ -58,6 +59,10 @@ CatalystApp.controller('CatalystController', function ($scope) {
 		$scope.card_types = window.catalyst_objects.card_types;
 		$scope.regions = window.catalyst_objects.regions;
 		$scope.groups = window.catalyst_objects.groups;
+		$scope.marker_image = new google.maps.MarkerImage('/CatalystCards/images/marker_cluster_1.png',
+                new google.maps.Size(32, 32),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(16, 16));
 
 		$scope.featured_stories = $scope.populateFeaturedStories();
 		$scope.all_stories = $scope.populateAllStories();
@@ -105,10 +110,27 @@ CatalystApp.controller('CatalystController', function ($scope) {
 		    			group : $scope.commitment_creation_input.group,
 		    			commitment : $scope.commitment_creation_input.catalyst_commitment,
 		    		},
-		    success: function(data) {
+		    success: function(data) { 
+		    	var marker_clusters = {};
+		    	var mapOptions = {
+				    center: { lat: 25.00, lng: 0},
+				    zoom: 2,
+				};
+				$scope.map = new google.maps.Map(document.getElementById('catalyst-map-canvas'), mapOptions);
+  
+		        var latLng = new google.maps.LatLng( 
+					$scope.regions[ $scope.commitment_creation_input.region ].location.lat, 
+					$scope.regions[ $scope.commitment_creation_input.region ].location.lng);
+				$scope.markers[ $scope.markers.length ] = new google.maps.Marker({
+		            map: $scope.map,
+		            position: latLng,
+		            icon: $scope.marker_image
+		        });
+		        marker_clusters = new MarkerClusterer($scope.map, $scope.markers);
 		        $scope.current_view ='map';
 		        $scope.initializeMapView();
-		        $scope.$apply();
+		        $scope.$apply();  
+
 		    }
 		});
 	}
@@ -222,19 +244,21 @@ CatalystApp.controller('CatalystController', function ($scope) {
 			var all_commitments = [];
 			var commitment = {};
 			var i;
-			for( i=0; i<data.length; i++) {
-				$scope.commitments_type_count[data[i].commitment]++;
-				
-				commitment = {
-					name : data[i].first_name + ' ' + data[i].last_name,
-					group : $scope.groups[ data[i].group ].title,
-					group_id : data[i].group,
-					region : $scope.regions[ data[i].region ].title,
-					region_id : data[i].region,
-					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
-					card_type_id : data[i].commitment,
+			if(data) {
+				for( i=0; i<data.length; i++) {
+					$scope.commitments_type_count[data[i].commitment]++;
+					
+					commitment = {
+						name : data[i].first_name + ' ' + data[i].last_name,
+						group : $scope.groups[ data[i].group ].title,
+						group_id : data[i].group,
+						region : $scope.regions[ data[i].region ].title,
+						region_id : data[i].region,
+						card_type_img : $scope.card_types[ data[i].commitment ].img_url,
+						card_type_id : data[i].commitment,
+					}
+					all_commitments.push(commitment);
 				}
-				all_commitments.push(commitment);
 			}
 
 			return all_commitments;
@@ -275,7 +299,6 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	 */
 	$scope.initializeMapView = function() {
 		var marker_clusters;
-		var markers = [];
 		var mapOptions = {};
 
 		if($scope.map) { 
@@ -285,25 +308,11 @@ CatalystApp.controller('CatalystController', function ($scope) {
 				google.maps.event.trigger($scope.map, 'resize')
 				$scope.map.setCenter(new google.maps.LatLng(25, 0));
 			}, 0);	
-		} else {
+		} else if($scope.all_commitments.length) {
 			var mapOptions = {
 			    center: { lat: 25.00, lng: 0},
 			    zoom: 2,
 			};
-
-			function addMarkers(address, i) {
-				var geocoder = new google.maps.Geocoder();
-				geocoder.geocode( { 'address': address}, function(results, status) {
-				    if (status == google.maps.GeocoderStatus.OK) {
-				        markers[i] = new google.maps.Marker({
-				            map: $scope.map,
-				            position: results[0].geometry.location
-				        });
-				    } else {
-				        console.log('Geocode was not successful for the following reason: ' + status);
-				    }
-				});
-			}
 
 			$scope.map = new google.maps.Map(document.getElementById('catalyst-map-canvas'), mapOptions);
 			
@@ -311,13 +320,14 @@ CatalystApp.controller('CatalystController', function ($scope) {
 				var latLng = new google.maps.LatLng( 
 					$scope.regions[ $scope.all_commitments[i].region_id ].location.lat, 
 					$scope.regions[ $scope.all_commitments[i].region_id ].location.lng);
-				markers[i] = new google.maps.Marker({
+				$scope.markers[i] = new google.maps.Marker({
 		            map: $scope.map,
-		            position: latLng
+		            position: latLng,
+		            icon: $scope.marker_image
 		        });
 		    }
 
-			marker_clusters = new MarkerClusterer($scope.map, markers);
+			marker_clusters = new MarkerClusterer($scope.map, $scope.markers);
 		}
 	}
 

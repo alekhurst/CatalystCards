@@ -15,8 +15,8 @@
 					<li ng-class="{'selected-catalyst-nav': current_view === 'map'}" ng-click="changeViews('map')">Commitments</li>
 				</ul>
 			</nav>
-			<button id="create-story-button" ng-click="changeViews('create')" ng-show="current_view ==='featured'">Create a Story!</button>
-			<button id="make-commitment-button" ng-click="changeViews('create_commitment')" ng-show="current_view === 'map'">Create a Commitment!</button>
+			<button id="create-story-button" ng-click="changeViews('create')" ng-show="current_view ==='featured'">Add your Story</button>
+			<button id="make-commitment-button" ng-click="changeViews('create_commitment')" ng-show="current_view === 'map'">Add your Commitment</button>
 			<header id="catalyst-types-header" ng-show="current_view === 'map'" ng-cloak="current_view === 'map'">
 				<article class="catalyst-commitment-type">
 					<img src="images/candor-card.png">
@@ -31,7 +31,7 @@
 				<article class="catalyst-commitment-type">
 					<img src="images/ownership-card.png">
 					<h1 class="commitment-type-count catalyst-netapp-purple"> {{commitments_type_count[2]}} </h1>
-					<h1 class="catalyst-netapp-purple">Ownership</h1>
+					<h1 class="catalyst-netapp-purple">Ownership with Accountability</h1>
 				</article>
 				<article class="catalyst-commitment-type">
 					<img src="images/speed-card.png">
@@ -124,7 +124,7 @@
 						<img class="catalyst-story-photo" ng-src="{{ all_stories_selected_story.photo_url }}">
 					</div>
 				</article>
-				<button id="create-story-button-2" ng-click="changeViews('create')" ng-show="current_view ==='featured'">Create a Story!</button>
+				<button id="create-story-button-2" ng-click="changeViews('create')" ng-show="current_view ==='featured'">Add your Story</button>
 			</section>
 
 			<!-- Story Creation View -->
@@ -137,9 +137,9 @@
 					<h2>Last Name</h2> 
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.last_name">
 					<h2>Region</h2> 
-					<select class="create-story-input-field" ng-model="story_creation_input.region" ng-options="region.id as region.title for region in regions"></select>
+					<select class="create-story-input-field" ng-model="story_creation_input.region" ng-options="region.id as region.title for region in regions | orderBy:'title'"></select>
 					<h2>Group </h2> 
-					<select class="create-story-input-field" ng-model="story_creation_input.group" ng-options="group.id as group.title for group in groups"></select>
+					<select class="create-story-input-field" ng-model="story_creation_input.group" ng-options="group.id as group.title for group in groups | orderBy:'title'"></select>
 					<h2>Manager</h2> 
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.manager">
 					<h2>Share Your Story</h2> 
@@ -182,9 +182,9 @@
 					<h2>Last Name</h2> 
 					<input class="create-commitment-input-field" type="text" ng-model="commitment_creation_input.last_name">
 					<h2>Region</h2> 
-					<select class="create-commitment-input-field" ng-model="commitment_creation_input.region" ng-options="region.id as region.title for region in regions"></select>
+					<select class="create-commitment-input-field" ng-model="commitment_creation_input.region" ng-options="r.id as r.title for r in regions | orderBy:'title'"></select>
 					<h2>Group </h2> 
-					<select class="create-commitment-input-field" ng-model="commitment_creation_input.group" ng-options="group.id as group.title for group in groups"></select>
+					<select class="create-commitment-input-field" ng-model="commitment_creation_input.group" ng-options="group.id as group.title for group in groups | orderBy:'title'"></select>
 				</div>
 				<button id="submit-commitment-creation" ng-click="createCommitmentInDatabase()">Submit</button>
 			</section>
