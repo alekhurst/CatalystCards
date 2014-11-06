@@ -87,47 +87,54 @@
 					
 					<div class="stats-output">
 						<div class="a-stat-container">
-							<h2>Stories per location</h2>
-							<select class="create-story-input-field" ng-change="updateTotalCompanayStats()" ng-model="stats_view.current_region" ng-options="region.id as region.title for region in regions"></select>
-							<h3>Stories: {{ stats_view.current_region_num_commitments }}</h3>
-							<h3>Participation: {{ stats_view.current_region_participation_percentage }}% or {{stats_view.current_region_num_commitments}}/{{regions[stats_view.current_region].employees}}</h3>
-							<h3><img src="images/candor-card.png"> {{ stats_view.current_region_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_view.current_region_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_view.current_region_ownership_commitments }} <img src="images/speed-card.png"> {{ stats_view.current_region_speed_commitments }}</h3>
+							<div class="container-1">
+								<h2>Stories per GEO</h2>
+								<select class="create-story-input-field" ng-change="updateGeoStats()" ng-model="geo_stats_view.current_geo" ng-options="geo.title for geo in geos | orderBy:'title'"></select>
+								<h3>Stories: {{ geo_stats_view.current_geo_num_commitments }}</h3>
+								<!-- <h3>Participation: {{ stats_view.current_region_participation_percentage }}% or {{stats_view.current_region_num_commitments}}/{{regions[stats_view.current_region].employees}}</h3> -->
+								<h3><img src="images/candor-card.png"> {{ geo_stats_view.current_geo_candor_commitments }} <img src="images/clarity-card.png"> {{ geo_stats_view.current_geo_clarity_commitments }} <img src="images/ownership-card.png"> {{ geo_stats_view.current_geo_ownership_commitments }} <img src="images/speed-card.png"> {{ geo_stats_view.current_geo_speed_commitments }}</h3>
+							</div>
+							<div class="container-2">
+								<h2>Commitments per GEO</h2>
+								<select class="create-story-input-field" ng-change="updateGeoStatsC()" ng-model="geo_stats_viewc.current_geo" ng-options="geo.title for geo in geos | orderBy:'title'"></select>
+								<h3>Commitments: {{ geo_stats_viewc.current_geo_num_commitments }}</h3>
+								<!-- <h3>Participation: {{ stats_view.current_region_participation_percentage }}% or {{stats_view.current_region_num_commitments}}/{{regions[stats_view.current_region].employees}}</h3> -->
+								<h3><img src="images/candor-card.png"> {{ geo_stats_viewc.current_geo_candor_commitments }} <img src="images/clarity-card.png"> {{ geo_stats_viewc.current_geo_clarity_commitments }} <img src="images/ownership-card.png"> {{ geo_stats_viewc.current_geo_ownership_commitments }} <img src="images/speed-card.png"> {{ geo_stats_viewc.current_geo_speed_commitments }}</h3>
+							</div>							
 						</div>
 						<div class="a-stat-container">
-							<h2>Commitments per location</h2>
-							<select class="create-story-input-field" ng-change="updateTotalCompanyStatsC()" ng-model="stats_viewc.current_region" ng-options="region.id as region.title for region in regions"></select>
-							<h3>Commitments: {{ stats_viewc.current_region_num_commitments }}</h3>
-							<h3>Participation: {{ stats_viewc.current_region_participation_percentage }}% or {{stats_viewc.current_region_num_commitments}}/{{regions[stats_viewc.current_region].employees}}</h3>
-							<h3><img src="images/candor-card.png"> {{ stats_viewc.current_region_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_viewc.current_region_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_viewc.current_region_ownership_commitments }} <img src="images/speed-card.png">{{ stats_viewc.current_region_speed_commitments }}</h3>
+							<div class="container-1">
+								<h2>Stories per location</h2>
+								<select class="create-story-input-field" ng-change="updateRegionStats()" ng-model="stats_view.current_region" ng-options="region.id as region.title for region in regions | orderBy:'title'"></select>
+								<h3>Stories: {{ stats_view.current_region_num_commitments }}</h3>
+								<h3>Participation: {{ stats_view.current_region_participation_percentage }}% or {{stats_view.current_region_num_commitments}}/{{regions[stats_view.current_region].employees}}</h3>
+								<h3><img src="images/candor-card.png"> {{ stats_view.current_region_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_view.current_region_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_view.current_region_ownership_commitments }} <img src="images/speed-card.png"> {{ stats_view.current_region_speed_commitments }}</h3>
+							</div>
+							<div class="container-2">
+								<h2>Commitments per location</h2>
+								<select class="create-story-input-field" ng-change="updateRegionStatsC()" ng-model="stats_view_commitments.current_region" ng-options="region.id as region.title for region in regions | orderBy:'title'"></select>
+								<h3>Commitments: {{ stats_view_commitments.current_region_num_commitments }}</h3>
+								<h3>Participation: {{ stats_view_commitments.current_region_participation_percentage }}% or {{stats_view_commitments.current_region_num_commitments}}/{{regions[stats_view_commitments.current_region].employees}}</h3>
+								<h3><img src="images/candor-card.png"> {{ stats_view_commitments.current_region_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_view_commitments.current_region_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_view_commitments.current_region_ownership_commitments }} <img src="images/speed-card.png">{{ stats_view_commitments.current_region_speed_commitments }}</h3>
+							</div>
 						</div>
 						<div class="a-stat-container">
-							<h2>Stories per location</h2>
-							<select class="create-story-input-field" ng-change="updateRegionStats()" ng-model="stats_view.current_region" ng-options="region.id as region.title for region in regions"></select>
-							<h3>Stories: {{ stats_view.current_region_num_commitments }}</h3>
-							<h3>Participation: {{ stats_view.current_region_participation_percentage }}% or {{stats_view.current_region_num_commitments}}/{{regions[stats_view.current_region].employees}}</h3>
-							<h3><img src="images/candor-card.png"> {{ stats_view.current_region_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_view.current_region_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_view.current_region_ownership_commitments }} <img src="images/speed-card.png"> {{ stats_view.current_region_speed_commitments }}</h3>
+							<div class="container-1">
+								<h2>Stories per group</h2>
+								<select class="create-story-input-field" ng-change="updateGroupStats()" ng-model="stats_viewg.current_group" ng-options="group.id as group.title for group in groups | orderBy:'title'"></select>
+								<h3>Stories: {{ stats_viewg.current_group_num_commitments }}</h3>
+								<!-- <h3>Participation %: NEED NUMBER OF EMPLOYEES PER GROUP</h3> -->
+								<h3><img src="images/candor-card.png"> {{ stats_viewg.current_group_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_viewg.current_group_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_viewg.current_group_ownership_commitments }} <img src="images/speed-card.png"> {{ stats_viewg.current_group_speed_commitments }}</h3>
+							</div>
+							<div class="container-2">
+								<h2>Commitments per group</h2>
+								<select class="create-story-input-field" ng-change="updateGroupStatsC()" ng-model="stats_viewgc.current_group" ng-options="region.id as region.title for region in groups | orderBy:'title'"></select>
+								<h3>Commitments: {{ stats_viewgc.current_group_num_commitments }}</h3>
+								<!-- <h3>Participation: NEED NUMBER OF EMPLOYEES PER GROUP</h3> -->
+								<h3> <img src="images/candor-card.png"> {{ stats_viewgc.current_group_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_viewgc.current_group_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_viewgc.current_group_ownership_commitments }} <img src="images/speed-card.png">{{ stats_viewgc.current_group_speed_commitments }} </h3>
+							</div>
 						</div>
-						<div class="a-stat-container">
-							<h2>Commitments per location</h2>
-							<select class="create-story-input-field" ng-change="updateRegionStatsC()" ng-model="stats_viewc.current_region" ng-options="region.id as region.title for region in regions"></select>
-							<h3>Commitments: {{ stats_viewc.current_region_num_commitments }}</h3>
-							<h3>Participation: {{ stats_viewc.current_region_participation_percentage }}% or {{stats_viewc.current_region_num_commitments}}/{{regions[stats_viewc.current_region].employees}}</h3>
-							<h3><img src="images/candor-card.png"> {{ stats_viewc.current_region_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_viewc.current_region_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_viewc.current_region_ownership_commitments }} <img src="images/speed-card.png">{{ stats_viewc.current_region_speed_commitments }}</h3>
-						</div>
-						<div class="a-stat-container">
-							<h2>Stories per group</h2>
-							<select class="create-story-input-field" ng-change="updateGroupStats()" ng-model="stats_viewg.current_group" ng-options="group.id as group.title for group in groups"></select>
-							<h3>Stories: {{ stats_viewg.current_group_num_commitments }}</h3>
-							<!-- <h3>Participation %: NEED NUMBER OF EMPLOYEES PER GROUP</h3> -->
-							<h3><img src="images/candor-card.png"> {{ stats_viewg.current_group_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_viewg.current_group_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_viewg.current_group_ownership_commitments }} <img src="images/speed-card.png"> {{ stats_viewg.current_group_speed_commitments }}</h3>
-						</div>
-						<div class="a-stat-container">
-							<h2>Commitments per group</h2>
-							<select class="create-story-input-field" ng-change="updateGroupStatsC()" ng-model="stats_viewgc.current_group" ng-options="region.id as region.title for region in groups"></select>
-							<h3>Commitments: {{ stats_viewgc.current_group_num_commitments }}</h3>
-							<!-- <h3>Participation: NEED NUMBER OF EMPLOYEES PER GROUP</h3> -->
-							<h3> <img src="images/candor-card.png"> {{ stats_viewgc.current_group_candor_commitments }} <img src="images/clarity-card.png"> {{ stats_viewgc.current_group_clarity_commitments }} <img src="images/ownership-card.png"> {{ stats_viewgc.current_group_ownership_commitments }} <img src="images/speed-card.png">{{ stats_viewgc.current_group_speed_commitments }} </h3>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -136,6 +143,5 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 		<script src="js/admin.js" type="text/javascript"></script>
 		<script src="js/objects.js" type="text/javascript"></script>
-    </script>
 	</body>
 </html>

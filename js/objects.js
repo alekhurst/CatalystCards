@@ -146,6 +146,12 @@ window.catalyst_objects = {
 		{ id: 131, title: 'Stavanger', location : { lat: 58.969976, lng: 5.733107}, employees: 1, geo: 'EMEA' },
 		{ id: 132, title: 'Kolkata', location : { lat: 22.572646, lng: 88.363895}, employees: 1, geo: 'INDIA' }, 
 	],
+	geos : [
+		{ id: 0, title: 'EMEA' },
+		{ id: 0, title: 'APAC' },
+		{ id: 0, title: 'AMERICAS' },
+		{ id: 0, title: 'INDIA' }
+	],
 	card_types : [
 		{ id: 0000, title: 'Candor', img_url: "images/candor-card.png" }, 
 		{ id: 0001, title: 'Clarity', img_url: "images/clarity-card.png" }, 

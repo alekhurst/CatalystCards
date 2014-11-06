@@ -521,7 +521,17 @@
 		top: 230px;
 		width: 1000px;
 	}
-		#catalyst-map-canvas {
+		#map-view #catalyst-map-canvas {
+			width: 1000px;
+			height: 500px;
+			border-radius: 15px;
+		}
+	#map-view-solo {
+		position: absolute;
+		top: 0px;
+		width: 1000px;
+	}
+		#map-view-solo #catalyst-map-canvas {
 			width: 1000px;
 			height: 500px;
 			border-radius: 15px;
@@ -886,5 +896,20 @@
 		}
 		.a-stat-container img {
 			width: 30px;
+		}
+		.a-stat-container .container-1 {
+			float: left;
+			clear: both;
+			margin-left: 30px;
+			width: 400px;
+		}
+		.a-stat-container .container-2 {
+			width: 400px;
+			display: inline;
+		} .a-stat-container  .container-2 select {
+			margin-left: 40px;
+		} .a-stat-container  .container-2 h3 {
+			position: relative;
+			left: 40px;
 		}
 /* ---- END ADMIN SPECIFIC STYLES */

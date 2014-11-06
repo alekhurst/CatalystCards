@@ -6,28 +6,14 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 	$scope.groups = [];
 	$scope.all_stories = {};
 	$scope.featured_stories = {};
+	$scope.all_commitments = {};
+
 	$scope.stats_view = {};
-
-	$scope.card_typesc = [];
-	$scope.regionsc = [];
-	$scope.groupsc = [];
-	$scope.all_storiesc = {};
-	$scope.featured_storiesc = {};
-	$scope.stats_viewc = {};
-
-	$scope.card_typesg = [];
-	$scope.regionsg = [];
-	$scope.groupsg = [];
-	$scope.all_storiesg = {};
-	$scope.featured_storiesg = {};
+	$scope.stats_view_commitments = {};
 	$scope.stats_viewg = {};
-
-	$scope.card_typesgc = [];
-	$scope.regionsgc = [];
-	$scope.groupsgc = [];
-	$scope.all_storiesgc = {};
-	$scope.featured_storiesgc = {};
-	$scope.stats_viewgc = {};
+	$scope.stats_viewcg = {};
+	$scope.geo_stats_viewc = {};
+	$scope.geo_stats_view = {};
 
 	/* ---- Methods ---- */
 	/**
@@ -39,10 +25,11 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.card_types = window.catalyst_objects.card_types;
 		$scope.regions = window.catalyst_objects.regions;
 		$scope.groups = window.catalyst_objects.groups;
+		$scope.geos = window.catalyst_objects.geos;
 
 		$scope.featured_stories = $scope.populateFeaturedStories(); 
 		$scope.all_stories = $scope.populateAllStories();
-		$scope.all_storiesc = $scope.populateAllCatalysts();
+		$scope.all_commitments = $scope.populateAllCatalysts();
 	};
 
 	/**
@@ -55,7 +42,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		    type: "POST",
 		    data : "",
 		    success: function(data) {
-		        $scope.all_storiesc = parseSuccessData(JSON.parse(data));
+		        $scope.all_commitments = parseSuccessData(JSON.parse(data));
 		        $scope.$apply()
 		    }
 		});
@@ -74,6 +61,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 					group : $scope.groups[ data[i].group ].title,
 					group_id : data[i].group,
 					region : $scope.regions[ data[i].region ].title,
+					geo : $scope.regions[ data[i].region ].geo,
 					region_id : data[i].region,
 					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
 					card_type_id : data[i].commitment,
@@ -112,6 +100,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 					group_id : data[i].group,
 					region : $scope.regions[ data[i].region ].title,
 					region_id : data[i].region,
+					geo : $scope.regions[ data[i].region ].geo,
 					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
 					card_type_id : data[i].commitment,
 					story : data[i].story,
@@ -198,6 +187,70 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		});
 	}
 
+	$scope.updateGeoStats = function() {
+		var i;
+		$scope.geo_stats_view.current_geo_num_commitments = 0;
+		$scope.geo_stats_view.current_geo_participation_percentage = 0;
+		$scope.geo_stats_view.current_geo_candor_commitments = 0;
+		$scope.geo_stats_view.current_geo_clarity_commitments = 0;
+		$scope.geo_stats_view.current_geo_ownership_commitments = 0;
+		$scope.geo_stats_view.current_geo_speed_commitments = 0;
+
+		for(i=0; i<$scope.all_stories.length; i++) {
+			if( $scope.geo_stats_view.current_geo.title == $scope.all_stories[i].geo) {
+
+				switch($scope.all_stories[i].card_type_id) {
+					case '0' :
+						$scope.geo_stats_view.current_geo_candor_commitments++;
+						break;
+					case '1' :
+						$scope.geo_stats_view.current_geo_clarity_commitments++;
+						break;
+					case '2' : 
+						$scope.geo_stats_view.current_geo_ownership_commitments++;
+						break;
+					case '3' :
+						$scope.geo_stats_view.current_geo_speed_commitments++;
+						break;
+				}	
+				$scope.geo_stats_view.current_geo_num_commitments++;
+			}
+		}
+		/* $scope.geo_stats_view.current_region_participation_percentage = (( $scope.geo_stats_view.current_region_num_commitments / $scope.regions[$scope.geo_stats_view.current_region].employees ) * 100).toFixed(2); */
+	}
+
+	$scope.updateGeoStatsC = function() {
+		var i;
+		$scope.geo_stats_viewc.current_geo_num_commitments = 0;
+		$scope.geo_stats_viewc.current_geo_participation_percentage = 0;
+		$scope.geo_stats_viewc.current_geo_candor_commitments = 0;
+		$scope.geo_stats_viewc.current_geo_clarity_commitments = 0;
+		$scope.geo_stats_viewc.current_geo_ownership_commitments = 0;
+		$scope.geo_stats_viewc.current_geo_speed_commitments = 0;
+
+		for(i=0; i<$scope.all_commitments.length; i++) {
+			if( $scope.geo_stats_viewc.current_geo.title == $scope.all_commitments[i].geo) {
+
+				switch($scope.all_commitments[i].card_type_id) {
+					case '0' :
+						$scope.geo_stats_viewc.current_geo_candor_commitments++;
+						break;
+					case '1' :
+						$scope.geo_stats_viewc.current_geo_clarity_commitments++;
+						break;
+					case '2' : 
+						$scope.geo_stats_viewc.current_geo_ownership_commitments++;
+						break;
+					case '3' :
+						$scope.geo_stats_viewc.current_geo_speed_commitments++;
+						break;
+				}	
+				$scope.geo_stats_viewc.current_geo_num_commitments++;
+			}
+		}
+		/* $scope.geo_stats_view.current_region_participation_percentage = (( $scope.geo_stats_view.current_region_num_commitments / $scope.regions[$scope.geo_stats_view.current_region].employees ) * 100).toFixed(2); */
+	}
+
 	$scope.updateRegionStats = function() {
 		var i;
 		$scope.stats_view.current_region_num_commitments = 0;
@@ -207,10 +260,10 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.stats_view.current_region_ownership_commitments = 0;
 		$scope.stats_view.current_region_speed_commitments = 0;
 
-		for(i=0; i<$scope.all_stories.length; i++) {
-			if( $scope.stats_view.current_region == $scope.all_stories[i].region_id) {
+		for(i=0; i<$scope.all_commitments.length; i++) {
+			if( $scope.stats_view.current_region == $scope.all_comm[i].region_id) {
 
-				switch($scope.all_stories[i].card_type_id) {
+				switch($scope.all_commitments[i].card_type_id) {
 					case '0' :
 						$scope.stats_view.current_region_candor_commitments++;
 						break;
@@ -232,34 +285,34 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 
 	$scope.updateRegionStatsC = function() {
 		var i;
-		$scope.stats_viewc.current_region_num_commitments = 0;
-		$scope.stats_viewc.current_region_participation_percentage = 0;
-		$scope.stats_viewc.current_region_candor_commitments = 0;
-		$scope.stats_viewc.current_region_clarity_commitments = 0;
-		$scope.stats_viewc.current_region_ownership_commitments = 0;
-		$scope.stats_viewc.current_region_speed_commitments = 0;
+		$scope.stats_view_commitments.current_region_num_commitments = 0;
+		$scope.stats_view_commitments.current_region_participation_percentage = 0;
+		$scope.stats_view_commitments.current_region_candor_commitments = 0;
+		$scope.stats_view_commitments.current_region_clarity_commitments = 0;
+		$scope.stats_view_commitments.current_region_ownership_commitments = 0;
+		$scope.stats_view_commitments.current_region_speed_commitments = 0;
 		
-		for(i=0; i<$scope.all_storiesc.length; i++) {
-			if( $scope.stats_viewc.current_region == $scope.all_storiesc[i].region_id) {
+		for(i=0; i<$scope.all_commitments.length; i++) {
+			if( $scope.stats_view_commitments.current_region == $scope.all_commitments[i].region_id) {
 
-				switch($scope.all_storiesc[i].card_type_id) {
+				switch($scope.all_commitments[i].card_type_id) {
 					case '0' :
-						$scope.stats_viewc.current_region_candor_commitments++;
+						$scope.stats_view_commitments.current_region_candor_commitments++;
 						break;
 					case '1' :
-						$scope.stats_viewc.current_region_clarity_commitments++;
+						$scope.stats_view_commitments.current_region_clarity_commitments++;
 						break;
 					case '2' : 
-						$scope.stats_viewc.current_region_ownership_commitments++;
+						$scope.stats_view_commitments.current_region_ownership_commitments++;
 						break;
 					case '3' :
-						$scope.stats_viewc.current_region_speed_commitments++;
+						$scope.stats_view_commitments.current_region_speed_commitments++;
 						break;
 				}	
-				$scope.stats_viewc.current_region_num_commitments++;
+				$scope.stats_view_commitments.current_region_num_commitments++;
 			}
 		}
-		$scope.stats_viewc.current_region_participation_percentage = (( $scope.stats_viewc.current_region_num_commitments / $scope.regions[$scope.stats_viewc.current_region].employees ) * 100).toFixed(2);
+		$scope.stats_view_commitments.current_region_participation_percentage = (( $scope.stats_view_commitments.current_region_num_commitments / $scope.regions[$scope.stats_view_commitments.current_region].employees ) * 100).toFixed(2);
 	}
 
 	$scope.updateGroupStats = function() {
@@ -291,7 +344,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				$scope.stats_viewg.current_group_num_commitments++;
 			}
 		}
-		$scope.stats_viewg.current_region_participation_percentage = (( $scope.stats_viewg.current_region_num_commitments / $scope.regions[$scope.stats_viewg.current_region].employees ) * 100).toFixed(2);
+		/* $scope.stats_viewg.current_group_participation_percentage = (( $scope.stats_viewg.current_group_num_commitments / $scope.groups[$scope.stats_viewg.current_group.employees ) * 100).toFixed(2); */
 	}
 
 	$scope.updateGroupStatsC = function() {
@@ -303,10 +356,10 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.stats_viewgc.current_group_ownership_commitments = 0;
 		$scope.stats_viewgc.current_group_speed_commitments = 0;
 		
-		for(i=0; i<$scope.all_storiesc.length; i++) {
-			if( $scope.stats_viewgc.current_group == $scope.all_storiesc[i].group_id) {
+		for(i=0; i<$scope.all_commitments.length; i++) {
+			if( $scope.stats_viewgc.current_group == $scope.all_commitments[i].group_id) {
 
-				switch($scope.all_storiesc[i].card_type_id) {
+				switch($scope.all_commitments[i].card_type_id) {
 					case '0' :
 						$scope.stats_viewgc.current_group_candor_commitments++;
 						break;
@@ -323,7 +376,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				$scope.stats_viewgc.current_group_num_commitments++;
 			}
 		}
-		$scope.stats_viewcg.current_region_participation_percentage = (( $scope.stats_viewcg.current_region_num_commitments / $scope.regions[$scope.stats_viewcg.current_region].employees ) * 100).toFixed(2);
+		/* $scope.stats_viewcg.current_group_participation_percentage = (( $scope.stats_viewcg.current_group_num_commitments / $scope.group[$scope.stats_viewcg.current_group].employees ) * 100).toFixed(2); */
 	}
 
 	$scope.initializeScopeVariables();
