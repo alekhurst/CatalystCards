@@ -1,15 +1,15 @@
 window.catalyst_objects = {
 	groups : [ 
-		{ id: 0000, title: 'ProdOps' }, 
-		{ id: 0001, title: 'HR' }, 
-		{ id: 0002, title: 'Corp Strategy' }, 
-		{ id: 0003, title: 'Finance/IT/WPR' }, 
-		{ id: 0004, title: 'Legal' }, 
-		{ id: 0005, title: 'Go-To-Market' }, 
-		{ id: 0006, title: 'Marketing' }, 
-		{ id: 0007, title: 'FieldOps' }, 
-		{ id: 0008, title: 'CSOps' }, 
-		{ id: 0009, title: 'GTMOps' }
+		{ id: 0000, title: 'ProdOps', employees: 4112 }, 
+		{ id: 0001, title: 'HR', employees: 158 }, 
+		{ id: 0002, title: 'Corp Strategy', employees: 36 }, 
+		{ id: 0003, title: 'Finance/IT/WPR', employees: 1446 }, 
+		{ id: 0004, title: 'Legal', employees: 78 }, 
+		{ id: 0005, title: 'Go-To-Market', employees: 6338 }, 
+		{ id: 0006, title: 'Marketing', employees: 339 }, 
+		{ id: 0007, title: 'FieldOps', employees: 3382 }, 
+		{ id: 0008, title: 'CSOps', employees: 2466 }, 
+		{ id: 0009, title: 'GTMOps', employees: 146 }
 	],
 	regions : [
 		{ id: 0, title: 'Sunnyvale', location : { lat: 37.368830, lng: -122.036350}, employees: 3783, geo: 'AMERICAS' }, 
@@ -147,10 +147,10 @@ window.catalyst_objects = {
 		{ id: 132, title: 'Kolkata', location : { lat: 22.572646, lng: 88.363895}, employees: 1, geo: 'INDIA' }, 
 	],
 	geos : [
-		{ id: 0, title: 'EMEA' },
-		{ id: 0, title: 'APAC' },
-		{ id: 0, title: 'AMERICAS' },
-		{ id: 0, title: 'INDIA' }
+		{ id: 0, title: 'EMEA', employees: 1929 },
+		{ id: 1, title: 'APAC', employees: 1075 },
+		{ id: 2, title: 'AMERICAS', employees: 2223 },
+		{ id: 3, title: 'INDIA', employees: 8879 }
 	],
 	card_types : [
 		{ id: 0000, title: 'Candor', img_url: "images/candor-card.png" }, 

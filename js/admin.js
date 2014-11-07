@@ -15,6 +15,8 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 	$scope.geo_stats_viewc = {};
 	$scope.geo_stats_view = {};
 
+
+
 	/* ---- Methods ---- */
 	/**
 	 * Called at the bottom of the controller, this initializes all $scope variables. 
@@ -44,6 +46,8 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		    success: function(data) {
 		        $scope.all_commitments = parseSuccessData(JSON.parse(data));
 		        $scope.$apply()
+		        $scope.updateTotalCompanyStatsC();
+		        $scope.$apply();
 		    }
 		});
 
@@ -68,7 +72,6 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				}
 				all_stories.push(story);
 			}
-
 			return all_stories;
 		}
 	};
@@ -80,7 +83,9 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		    data : "",
 		    success: function(data) {
 		        $scope.all_stories = parseSuccessData(JSON.parse(data));
-		        $scope.$apply()
+		        $scope.$apply();
+		        $scope.updateTotalCompanyStats();
+		        $scope.$apply();
 		    }
 		});
 
@@ -107,8 +112,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 					photo_url : data[i].photo_url
 				}
 				all_stories.push(story);
-			}
-
+			}		
 			return all_stories;
 		}
 	};
@@ -150,7 +154,6 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 					featured_stories.push(story);
 				}
 			} 
-
 			return featured_stories;
 		}
 	};	
@@ -187,6 +190,55 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		});
 	}
 
+
+	$scope.updateTotalCompanyStats = function() {
+		$scope.total_company_candor_commitments = 0;
+		$scope.total_company_clarity_commitments = 0;
+		$scope.total_company_ownership_commitments = 0;
+		$scope.total_company_speed_commitments = 0;
+		for(i=0; i<$scope.all_stories.length; i++) {
+			switch($scope.all_stories[i].card_type_id) {
+				case '0' :
+					$scope.total_company_candor_commitments++;
+					break;
+				case '1' :
+					$scope.total_company_clarity_commitments++;
+					break;
+				case '2' : 
+					$scope.total_company_ownership_commitments++;
+					break;
+				case '3' :
+					$scope.total_company_speed_commitments++;
+					break;
+			}
+		}	
+		$scope.total_company_participation = (( $scope.all_stories.length / 14106 ) * 100).toFixed(2);
+	}
+
+	$scope.updateTotalCompanyStatsC = function() {
+		$scope.total_company_candor_commitmentsc = 0;
+		$scope.total_company_clarity_commitmentsc = 0;
+		$scope.total_company_ownership_commitmentsc = 0;
+		$scope.total_company_speed_commitmentsc = 0;
+		for(i=0; i<$scope.all_commitments.length; i++) {
+			switch($scope.all_commitments[i].card_type_id) {
+				case '0' :
+					$scope.total_company_candor_commitmentsc++;
+					break;
+				case '1' :
+					$scope.total_company_clarity_commitmentsc++;
+					break;
+				case '2' : 
+					$scope.total_company_ownership_commitmentsc++;
+					break;
+				case '3' :
+					$scope.total_company_speed_commitmentsc++;
+					break;
+			}
+		}	
+		$scope.total_company_participationc = (( $scope.all_commitments.length / 14106 ) * 100).toFixed(2);
+	}
+
 	$scope.updateGeoStats = function() {
 		var i;
 		$scope.geo_stats_view.current_geo_num_commitments = 0;
@@ -198,7 +250,6 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 
 		for(i=0; i<$scope.all_stories.length; i++) {
 			if( $scope.geo_stats_view.current_geo.title == $scope.all_stories[i].geo) {
-
 				switch($scope.all_stories[i].card_type_id) {
 					case '0' :
 						$scope.geo_stats_view.current_geo_candor_commitments++;
@@ -216,7 +267,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				$scope.geo_stats_view.current_geo_num_commitments++;
 			}
 		}
-		/* $scope.geo_stats_view.current_region_participation_percentage = (( $scope.geo_stats_view.current_region_num_commitments / $scope.regions[$scope.geo_stats_view.current_region].employees ) * 100).toFixed(2); */
+		$scope.geo_stats_view.current_geo_participation_percentage = (( $scope.geo_stats_view.current_geo_num_commitments / $scope.geos[ $scope.geo_stats_view.current_geo.id ] .employees ) * 100).toFixed(2); 
 	}
 
 	$scope.updateGeoStatsC = function() {
@@ -248,8 +299,8 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				$scope.geo_stats_viewc.current_geo_num_commitments++;
 			}
 		}
-		/* $scope.geo_stats_view.current_region_participation_percentage = (( $scope.geo_stats_view.current_region_num_commitments / $scope.regions[$scope.geo_stats_view.current_region].employees ) * 100).toFixed(2); */
-	}
+		$scope.geo_stats_viewc.current_geo_participation_percentage = (( $scope.geo_stats_viewc.current_geo_num_commitments / $scope.regions[$scope.geo_stats_viewc.current_geo.id].employees ) * 100).toFixed(2);	
+    }
 
 	$scope.updateRegionStats = function() {
 		var i;
@@ -261,7 +312,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.stats_view.current_region_speed_commitments = 0;
 
 		for(i=0; i<$scope.all_commitments.length; i++) {
-			if( $scope.stats_view.current_region == $scope.all_comm[i].region_id) {
+			if( $scope.stats_view.current_region == $scope.all_commitments[i].region_id) {
 
 				switch($scope.all_commitments[i].card_type_id) {
 					case '0' :
@@ -344,7 +395,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				$scope.stats_viewg.current_group_num_commitments++;
 			}
 		}
-		/* $scope.stats_viewg.current_group_participation_percentage = (( $scope.stats_viewg.current_group_num_commitments / $scope.groups[$scope.stats_viewg.current_group.employees ) * 100).toFixed(2); */
+		$scope.stats_viewg.current_group_participation_percentage = (( $scope.stats_viewg.current_group_num_commitments / $scope.groups[$scope.stats_viewg.current_group].employees ) * 100).toFixed(2);
 	}
 
 	$scope.updateGroupStatsC = function() {
@@ -376,7 +427,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 				$scope.stats_viewgc.current_group_num_commitments++;
 			}
 		}
-		/* $scope.stats_viewcg.current_group_participation_percentage = (( $scope.stats_viewcg.current_group_num_commitments / $scope.group[$scope.stats_viewcg.current_group].employees ) * 100).toFixed(2); */
+		$scope.stats_viewgc.current_group_participation_percentage = (( $scope.stats_viewgc.current_group_num_commitments / $scope.groups[$scope.stats_viewgc.current_group].employees ) * 100).toFixed(2); 
 	}
 
 	$scope.initializeScopeVariables();
