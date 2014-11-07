@@ -28,7 +28,7 @@ AddCommitmentApp.controller('AddCommitmentController', function ($scope) {
 		    			commitment : $scope.commitment_creation_input.catalyst_commitment,
 		    		},
 		    success: function() { 
-		    	window.location = 'index.html';
+		    	window.top.location.href = 'index.html';
 		    }
 		});
 	}
