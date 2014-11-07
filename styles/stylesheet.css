@@ -225,6 +225,7 @@
 	/* ---- END CREATE STORY VIEW ---- */
 	/* ---- BEGIN COMMITMENT CREATION VIEW ---- */
 	#commitment-creation-view {
+		font-family: 'Open Sans', sans-serif;
 		position: absolute;
 		font-size: 20px;
 		top: 60px;
