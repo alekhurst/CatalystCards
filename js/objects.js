@@ -155,7 +155,7 @@ window.catalyst_objects = {
 	card_types : [
 		{ id: 0000, title: 'Candor', img_url: "images/candor-card.png" }, 
 		{ id: 0001, title: 'Clarity', img_url: "images/clarity-card.png" }, 
-		{ id: 0002, title: 'Ownership', img_url: "images/ownership-card.png" }, 
+		{ id: 0002, title: 'Ownership with Accountability', img_url: "images/ownership-card.png" }, 
 		{ id: 0003, title: 'Speed', img_url: "images/speed-card.png" }
 	],
 }

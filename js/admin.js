@@ -212,7 +212,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 					break;
 			}
 		}	
-		$scope.total_company_participation = (( $scope.all_stories.length / 14106 ) * 100).toFixed(2);
+		$scope.total_company_participation = (( $scope.all_stories.length / 12185 ) * 100).toFixed(2);
 	}
 
 	$scope.updateTotalCompanyStatsC = function() {
@@ -236,7 +236,7 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 					break;
 			}
 		}	
-		$scope.total_company_participationc = (( $scope.all_commitments.length / 14106 ) * 100).toFixed(2);
+		$scope.total_company_participationc = (( $scope.all_commitments.length / 12185 ) * 100).toFixed(2);
 	}
 
 	$scope.updateGeoStats = function() {

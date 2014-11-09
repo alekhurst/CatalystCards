@@ -127,7 +127,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 		            icon: $scope.marker_image
 		        });
 		        marker_clusters = new MarkerClusterer($scope.map, $scope.markers);
-		        $scope.current_view ='map';
+		        //$scope.current_view ='map';
 		        $scope.initializeMapView();
 		        $scope.$apply();  
 
