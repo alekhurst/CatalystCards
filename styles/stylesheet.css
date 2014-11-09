@@ -77,6 +77,20 @@
 	} #create-story-button-2:hover {
 		background-color: #AF272F;
 	}
+	#executive-commitments {
+		position: absolute;
+		cursor: pointer;
+		right: 0px;
+		padding: 11px 15px;
+		border: none;
+		background-color: #0067C5;
+		border-radius: 12px;
+		font-size: 17px;
+		color: white;
+		text-decoration: none;
+	} #executive-commitments:focus {
+		outline: none;
+	}
 	#make-commitment-button {
 		cursor: pointer;
 		position: absolute;
@@ -280,6 +294,10 @@
 				margin: 13px 0px 0px 20px;
 				font-size: 15px;
 				color: red;
+			}
+			#create-story-photo-uplaod {
+				position: absolute;
+				right: 0px;
 			}
 		#commitment-creation-view #submit-commitment-creation {
 			float: right;

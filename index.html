@@ -17,6 +17,7 @@
 			</nav>
 			<button id="create-story-button" ng-click="changeViews('create')" ng-show="current_view ==='featured'">Add Your Story</button>
 			<button id="make-commitment-button" ng-click="changeViews('create_commitment')" ng-show="current_view === 'map'">Add Your Commitment</button>
+			<a href="http://culture.netapp.com/winningwithculture/executive-commitments/" id="executive-commitments">Executive Commitments</a>
 			<header id="catalyst-types-header" ng-show="current_view === 'map'" ng-cloak="current_view === 'map'">
 				<article class="catalyst-commitment-type">
 					<img src="images/candor-card.png">
@@ -144,8 +145,8 @@
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.manager">
 					<h2>Share Your Story<br> (English Only Please)</h2> 
 					<textarea class="create-story-input-field" ng-model="story_creation_input.story"></textarea>
-					<h2>Attach a Photo</h2> 
-					<h3 id="photo-upload-warning"> For best results please press 'Crop' one time, and then press 'Finish' </h3>
+					<h2>Attach a Photo<br>(If you would like to include a video, please upload it to the NetApp Video Hub & include the URL in your story)</h2> 
+					<h3 id="photo-upload-warning"> For best results please press 'Crop' one time, and then press 'Finish'. </h3>
 					<div class="create-story-input-field" id="create-story-photo-upload"> </div>
 				</div>
 				<h1 id="preview-creation-story-header"> Preview </h1>
