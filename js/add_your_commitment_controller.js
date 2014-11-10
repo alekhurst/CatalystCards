@@ -28,7 +28,7 @@ AddCommitmentApp.controller('AddCommitmentController', function ($scope) {
 		    			commitment : $scope.commitment_creation_input.catalyst_commitment,
 		    		},
 		    success: function() { 
-		    	window.top.location.href = 'http://culture.netapp.com/employee-catalyst-commitment/';
+		    	window.top.location.href = 'http://culture.netapp.com/winningwithculture/catalysts-stories/';
 		    }
 		});
 	}
