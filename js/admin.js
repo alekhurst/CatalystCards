@@ -268,10 +268,9 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 						break;
 					case '3' :
 						$scope.geo_stats_view.current_geo_speed_commitments++;
-						break;
-					
-					$scope.geo_stats_view.current_geo_num_commitments++;
+						break;				
 				}
+				$scope.geo_stats_view.current_geo_num_commitments++;
 			}
 		}
 		$scope.geo_stats_view.current_geo_participation_percentage = (( $scope.geo_stats_view.current_geo_num_commitments / $scope.geos[ $scope.geo_stats_view.current_geo.id ] .employees ) * 100).toFixed(2); 
@@ -287,23 +286,22 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.geo_stats_viewc.current_geo_speed_commitments = 0;
 
 		for(i=0; i<$scope.all_commitments.length; i++) {
-			if($scope.geo_stats_view.current_geo.work_type == 1 || $scope.geo_stats_view.current_geo.work_type == '1') {
-				switch($scope.all_commitments[i].card_type_id) {
-					case '0' :
-						$scope.geo_stats_viewc.current_geo_candor_commitments++;
-						break;
-					case '1' :
-						$scope.geo_stats_viewc.current_geo_clarity_commitments++;
-						break;
-					case '2' : 
-						$scope.geo_stats_viewc.current_geo_ownership_commitments++;
-						break;
-					case '3' :
-						$scope.geo_stats_viewc.current_geo_speed_commitments++;
-						break;
-				}	
-				$scope.geo_stats_viewc.current_geo_num_commitments++;
-			}
+			switch($scope.all_commitments[i].card_type_id) {
+				case '0' :
+					$scope.geo_stats_viewc.current_geo_candor_commitments++;
+					break;
+				case '1' :
+					$scope.geo_stats_viewc.current_geo_clarity_commitments++;
+					break;
+				case '2' : 
+					$scope.geo_stats_viewc.current_geo_ownership_commitments++;
+					break;
+				case '3' :
+					$scope.geo_stats_viewc.current_geo_speed_commitments++;
+					break;
+			}	
+			$scope.geo_stats_viewc.current_geo_num_commitments++;
+			
 			
 		}
 		$scope.geo_stats_viewc.current_geo_participation_percentage = (( $scope.geo_stats_viewc.current_geo_num_commitments / $scope.regions[$scope.geo_stats_viewc.current_geo.id].employees ) * 100).toFixed(2);	
