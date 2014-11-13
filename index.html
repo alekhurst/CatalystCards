@@ -43,7 +43,7 @@
 
 			<!-- Featured View -->
 			<section id="featured-view" ng-show="current_view === 'featured'" ng-cloak="current_view === 'featured'">
-				<h1>Featured</h1>
+				<h1>Featured Stories</h1>
 				<div id="mini-featured-stories">
 					<button ng-repeat="featured_story in featured_stories" ng-click="setCurrentStory(featured_story)">
 						<img ng-src="{{featured_story.card_type_img}}"> 
@@ -65,7 +65,7 @@
 					</div>
 				</article>
 				<h2 style="color:red" ng-hide="featured_stories.length"> There are currently no featured stories, please add one using the admin application </h2>
-				<h1>All</h1>
+				<h1>All Stories</h1>
 			</section>
 
 			<!-- All View -->
@@ -73,7 +73,7 @@
 			    <div id="search-and-filter">
 			    	<div>			    	
 				    	<input id="all-view-search" name="query_string" type="text" placeholder="Search Here" ng-model="search.$">
-				    	<h3>Filter By Region</h3>
+				    	<h3>Filter By Site</h3>
 				    	<select class="all-view-dropdown" ng-model="search.region_id" ng-options="region.id as region.title for region in regions"></select>
 				    	<h3>Filter By Group</h3>
 				    	<select class="all-view-dropdown" ng-model="search.group_id" ng-options="group.id as group.title for group in groups"></select>
@@ -137,10 +137,15 @@
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.first_name">
 					<h2>Last Name</h2> 
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.last_name">
-					<h2>Region</h2> 
+					<h2>Site</h2> 
 					<select class="create-story-input-field" ng-model="story_creation_input.region" ng-options="region.id as region.title for region in regions | orderBy:'title'"></select>
 					<h2>Group </h2> 
 					<select class="create-story-input-field" ng-model="story_creation_input.group" ng-options="group.id as group.title for group in groups | orderBy:'title'"></select>
+					<h2>Work Type</h2>
+					<select class="create-story-input-field" ng-model="story_creation_input.work_type">
+						<option ng-value="1">Employee</option>
+						<option ng-value="0">Contractor</option>
+					</select>
 					<h2>Manager</h2> 
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.manager">
 					<h2>Share Your Story<br> (English Only Please)</h2> 
@@ -171,6 +176,7 @@
 
 			<section id="map-view" ng-show="current_view === 'map'" ng-cloak="current_view === 'map'">
 				<h1 style="text-align: center" class="catalyst-netapp-blue">Winning Together Map</h1>
+				<h1 style="text-align: center; font-size: 15px;" class="catalyst-netapp-blue">Add your Catalyst Commitment to the Winning Together Map and watch your site’s total increase because of your participation!</h1>
 				<div ng-show="current_view === 'map'" id="catalyst-map-canvas">
 				</div>
 			</section>
@@ -178,14 +184,20 @@
 			<!-- Commitment Creation View -->
 			<section id="commitment-creation-view" ng-show="current_view === 'create_commitment'" ng-cloak="current_view === 'create_commitment'">
 				<div id="commitment-creation-form">
+					<h1 style="font-size:20px; padding: 0px 0px 0px 40px;">Share your Catalyst Commitment and watch the number increase on our Winning Together map. Thank you for doing your part to help NetApp Get Things Done better, faster, easier.</h1>
 					<h2>Catalyst Commitment</h2> 
 					<select class="create-commitment-input-field" ng-model="commitment_creation_input.catalyst_commitment" ng-options="card_type.id as card_type.title for card_type in card_types"></select>
 					<h2>First Name</h2> 
 					<input class="create-commitment-input-field" type="text" ng-model="commitment_creation_input.first_name">
 					<h2>Last Name</h2> 
 					<input class="create-commitment-input-field" type="text" ng-model="commitment_creation_input.last_name">
-					<h2>Region</h2> 
+					<h2>Site</h2> 
 					<select class="create-commitment-input-field" ng-model="commitment_creation_input.region" ng-options="r.id as r.title for r in regions | orderBy:'title'"></select>
+					<h2>Work Type</h2>
+					<select class="create-commitment-input-field" ng-model="commitment_creation_input.work_type">
+						<option ng-value="1">Employee</option>
+						<option ng-value="0">Contractor</option>
+					</select>
 					<h2>Group </h2> 
 					<select class="create-commitment-input-field" ng-model="commitment_creation_input.group" ng-options="group.id as group.title for group in groups | orderBy:'title'"></select>
 				</div>

@@ -86,7 +86,8 @@ CatalystApp.controller('CatalystController', function ($scope) {
 		    			commitment : $scope.story_creation_input.catalyst_commitment,
 		    			manager : $scope.story_creation_input.manager,
 		    			photo_url : $scope.story_creation_input.photo_url,
-		    			story : $scope.story_creation_input.story
+		    			story : $scope.story_creation_input.story,
+		    			work_type : $scope.story_creation_input.work_type
 		    		},
 		    success: function(data) {
 		        $scope.current_view ='featured';
@@ -109,6 +110,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 		    			region : $scope.commitment_creation_input.region,
 		    			group : $scope.commitment_creation_input.group,
 		    			commitment : $scope.commitment_creation_input.catalyst_commitment,
+		    			work_type : $scope.commitment_creation_input.work_type,
 		    		},
 		    success: function(data) { 
 		    	var marker_clusters = {};

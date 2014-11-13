@@ -17,8 +17,9 @@
 	$region = mysqli_real_escape_string($conn, $_POST['region']);
 	$group =  mysqli_real_escape_string($conn, $_POST['group']);
 	$commitment =  mysqli_real_escape_string($conn, $_POST['commitment']);
+	$work_type = mysqli_real_escape_string($conn, $_POST['work_type']);
 
-	$sql = "INSERT INTO `wp_catalyst_commitments` (`uid`, `first_name`, `last_name`, `region`, `group`, `commitment`) VALUES (CURRENT_TIMESTAMP, '$first_name', '$last_name', '$region', '$group', '$commitment');";
+	$sql = "INSERT INTO `wp_catalyst_commitments` (`uid`, `first_name`, `last_name`, `region`, `group`, `commitment`, `work_type`) VALUES (CURRENT_TIMESTAMP, '$first_name', '$last_name', '$region', '$group', '$commitment', '$work_type');";
 
 	mysqli_query($conn,$sql);
 
