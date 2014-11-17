@@ -15,7 +15,7 @@ window.catalyst_objects = {
 		{ id: 0, title: 'Sunnyvale', location : { lat: 37.368830, lng: -122.036350}, employees: 3064, geo: 'AMERICAS' }, 
 		{ id: 1, title: 'Bangalore', location : { lat: 12.971599, lng: 77.594563}, employees: 1775, geo: 'INDIA' },
 		{ id: 2, title: 'RTP', location : { lat: 35.899168, lng: -78.863640}, employees: 1730, geo: 'AMERICAS' }, 
-		{ id: 3, title: 'Winchita, KS', location : { lat: 37.688889, lng: -97.336111}, employees: 617, geo: 'AMERICAS' },
+		{ id: 3, title: 'Wichita, KS', location : { lat: 37.688889, lng: -97.336111}, employees: 617, geo: 'AMERICAS' },
 		{ id: 4, title: 'Vienna, VA', location : { lat: 38.901223, lng: -77.265260}, employees: 318, geo: 'AMERICAS' }, 
 		{ id: 5, title: 'Schiphol Rijk', location : { lat: 52.279722, lng: 4.753889}, employees: 320, geo: 'EMEA' },
 		{ id: 6, title: 'Waltham, MA', location : { lat: 42.376485, lng: -71.235611}, employees: 288, geo: 'AMERICAS' },
