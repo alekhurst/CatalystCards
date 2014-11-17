@@ -215,7 +215,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
 					card_type_id : data[i].commitment,
 					story : data[i].story,
-					photo_url : data[i].photo_url
+					photo_url : data[i].photo_url || false
 				}
 				all_stories.push(story);
 			}

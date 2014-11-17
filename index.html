@@ -121,7 +121,7 @@
 						<p class="catalyst-story-story" id="catalyst-story-story-1"> {{ all_stories_selected_story.story }} </p>
 					</div>
 					<div class='catalyst-story-photo-container'>
-						<img class="catalyst-story-photo" ng-src="{{ all_stories_selected_story.photo_url }}">
+						<img class="catalyst-story-photo" ng-show="all_stories_selected_story.photo_url" ng-src="{{ all_stories_selected_story.photo_url }}">
 					</div>
 				</article>
 				<button id="create-story-button-2" ng-click="changeViews('create')" ng-show="current_view ==='featured'">Add Your Story</button>
