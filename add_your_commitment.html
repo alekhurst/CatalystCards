@@ -10,13 +10,14 @@
 		<h1 style="text-align:center;font-family: 'Open Sans', sans-serif;" class="catalyst-netapp-blue"> Add your Commitment </h1>
 		<section style="top:100px; left: 50%; margin-left:-500px;" id="commitment-creation-view">
 			<div id="commitment-creation-form">
+				<h1 style="font-size:20px; padding: 0px 0px 0px 40px;">Share your Catalyst Commitment and watch the number increase on our Winning Together map. Thank you for doing your part to help NetApp Get Things Done better, faster, easier.</h1>
 				<h2>Catalyst Commitment</h2> 
 				<select class="create-commitment-input-field" ng-model="commitment_creation_input.catalyst_commitment" ng-options="card_type.id as card_type.title for card_type in card_types"></select>
 				<h2>First Name</h2> 
 				<input class="create-commitment-input-field" type="text" ng-model="commitment_creation_input.first_name">
 				<h2>Last Name</h2> 
 				<input class="create-commitment-input-field" type="text" ng-model="commitment_creation_input.last_name">
-				<h2>Region</h2> 
+				<h2>Site</h2> 
 				<select class="create-commitment-input-field" ng-model="commitment_creation_input.region" ng-options="r.id as r.title for r in regions | orderBy:'title'"></select>
 				<h2>Group </h2> 
 				<select class="create-commitment-input-field" ng-model="commitment_creation_input.group" ng-options="group.id as group.title for group in groups | orderBy:'title'"></select>

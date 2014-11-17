@@ -20,8 +20,9 @@
 	$commitment =  mysqli_real_escape_string($conn, $_POST['commitment']);
 	$story =  mysqli_real_escape_string($conn, $_POST['story']);
 	$photo_url =  mysqli_real_escape_string($conn, $_POST['photo_url']);
+	$work_type = mysqli_real_escape_string($conn, $_POST['work_type']);
 
-	$sql = "INSERT INTO `wp_catalyst_commitment` (`uid`, `first_name`, `last_name`, `region`, `group`, `commitment`, `manager`, `photo_url`, `story`) VALUES (CURRENT_TIMESTAMP, '$first_name', '$last_name', '$region', '$group', '$commitment', '$manager', '$photo_url', '$story');";
+	$sql = "INSERT INTO `wp_catalyst_commitment` (`uid`, `first_name`, `last_name`, `region`, `group`, `commitment`, `manager`, `photo_url`, `story`, `work_type`) VALUES (CURRENT_TIMESTAMP, '$first_name', '$last_name', '$region', '$group', '$commitment', '$manager', '$photo_url', '$story', '$work_type');";
 
 	mysqli_query($conn,$sql);
 

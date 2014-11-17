@@ -57,20 +57,23 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 			var i;
 
 			for( i=0; i<data.length; i++) {
-				story = {
-					id : data[i].uid,
-					first_name : data[i].first_name,
-					last_name : data[i].last_name,
-					name : data[i].first_name + ' ' + data[i].last_name,
-					group : $scope.groups[ data[i].group ].title,
-					group_id : data[i].group,
-					region : $scope.regions[ data[i].region ].title,
-					geo : $scope.regions[ data[i].region ].geo,
-					region_id : data[i].region,
-					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
-					card_type_id : data[i].commitment,
+				if(data[i].work_type == 1 || data[i].work_type == '1') {
+					story = {
+						id : data[i].uid,
+						first_name : data[i].first_name,
+						last_name : data[i].last_name,
+						name : data[i].first_name + ' ' + data[i].last_name,
+						group : $scope.groups[ data[i].group ].title,
+						group_id : data[i].group,
+						region : $scope.regions[ data[i].region ].title,
+						geo : $scope.regions[ data[i].region ].geo,
+						region_id : data[i].region,
+						card_type_img : $scope.card_types[ data[i].commitment ].img_url,
+						card_type_id : data[i].commitment,
+						work_type : data[i].work_type
+					}
+					all_stories.push(story);
 				}
-				all_stories.push(story);
 			}
 			return all_stories;
 		}
@@ -95,23 +98,26 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 			var i;
 
 			for( i=0; i<data.length; i++) {
-				story = {
-					id : data[i].uid,
-					first_name : data[i].first_name,
-					last_name : data[i].last_name,
-					name : data[i].first_name + ' ' + data[i].last_name,
-					manager : data[i].manager,
-					group : $scope.groups[ data[i].group ].title,
-					group_id : data[i].group,
-					region : $scope.regions[ data[i].region ].title,
-					region_id : data[i].region,
-					geo : $scope.regions[ data[i].region ].geo,
-					card_type_img : $scope.card_types[ data[i].commitment ].img_url,
-					card_type_id : data[i].commitment,
-					story : data[i].story,
-					photo_url : data[i].photo_url
+				if(data[i].work_type == 1 || data[i].work_type == '1') {
+					story = {
+						id : data[i].uid,
+						first_name : data[i].first_name,
+						last_name : data[i].last_name,
+						name : data[i].first_name + ' ' + data[i].last_name,
+						manager : data[i].manager,
+						group : $scope.groups[ data[i].group ].title,
+						group_id : data[i].group,
+						region : $scope.regions[ data[i].region ].title,
+						region_id : data[i].region,
+						geo : $scope.regions[ data[i].region ].geo,
+						card_type_img : $scope.card_types[ data[i].commitment ].img_url,
+						card_type_id : data[i].commitment,
+						story : data[i].story,
+						photo_url : data[i].photo_url,
+						work_type : data[i].work_type
+					}
+					all_stories.push(story);
 				}
-				all_stories.push(story);
 			}		
 			return all_stories;
 		}
@@ -262,8 +268,8 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 						break;
 					case '3' :
 						$scope.geo_stats_view.current_geo_speed_commitments++;
-						break;
-				}	
+						break;				
+				}
 				$scope.geo_stats_view.current_geo_num_commitments++;
 			}
 		}
@@ -280,24 +286,23 @@ CatalystAdminApp.controller('CatalystAdminController', function ($scope) {
 		$scope.geo_stats_viewc.current_geo_speed_commitments = 0;
 
 		for(i=0; i<$scope.all_commitments.length; i++) {
-			if( $scope.geo_stats_viewc.current_geo.title == $scope.all_commitments[i].geo) {
-
-				switch($scope.all_commitments[i].card_type_id) {
-					case '0' :
-						$scope.geo_stats_viewc.current_geo_candor_commitments++;
-						break;
-					case '1' :
-						$scope.geo_stats_viewc.current_geo_clarity_commitments++;
-						break;
-					case '2' : 
-						$scope.geo_stats_viewc.current_geo_ownership_commitments++;
-						break;
-					case '3' :
-						$scope.geo_stats_viewc.current_geo_speed_commitments++;
-						break;
-				}	
-				$scope.geo_stats_viewc.current_geo_num_commitments++;
-			}
+			switch($scope.all_commitments[i].card_type_id) {
+				case '0' :
+					$scope.geo_stats_viewc.current_geo_candor_commitments++;
+					break;
+				case '1' :
+					$scope.geo_stats_viewc.current_geo_clarity_commitments++;
+					break;
+				case '2' : 
+					$scope.geo_stats_viewc.current_geo_ownership_commitments++;
+					break;
+				case '3' :
+					$scope.geo_stats_viewc.current_geo_speed_commitments++;
+					break;
+			}	
+			$scope.geo_stats_viewc.current_geo_num_commitments++;
+			
+			
 		}
 		$scope.geo_stats_viewc.current_geo_participation_percentage = (( $scope.geo_stats_viewc.current_geo_num_commitments / $scope.regions[$scope.geo_stats_viewc.current_geo.id].employees ) * 100).toFixed(2);	
     }
