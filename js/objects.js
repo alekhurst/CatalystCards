@@ -12,7 +12,7 @@ window.catalyst_objects = {
 		{ id: 0009, title: 'GTMOps', employees: 146 }
 	],
 	regions : [
-		{ id: 0, title: 'Sunnyvale', location : { lat: 37.368830, lng: -122.036350}, employees: 3064, geo: 'AMERICAS' }, 
+		{ id: 0, title: 'Sunnyvale', location : { lat: 37.411261, lng: -122.011902}, employees: 3064, geo: 'AMERICAS' }, 
 		{ id: 1, title: 'Bangalore', location : { lat: 12.971599, lng: 77.594563}, employees: 1775, geo: 'INDIA' },
 		{ id: 2, title: 'RTP', location : { lat: 35.899168, lng: -78.863640}, employees: 1730, geo: 'AMERICAS' }, 
 		{ id: 3, title: 'Wichita, KS', location : { lat: 37.688889, lng: -97.336111}, employees: 617, geo: 'AMERICAS' },
