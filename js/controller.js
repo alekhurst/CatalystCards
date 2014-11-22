@@ -336,3 +336,9 @@ CatalystApp.controller('CatalystController', function ($scope) {
 
 	$scope.initializeScopeVariables(); // called when controller code is finished loading
 });
+
+CatalystApp.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
