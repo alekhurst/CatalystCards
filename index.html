@@ -103,7 +103,7 @@
 				    	</tr>
 			    	</thead>
 			    	<tbody>
-				    	<tr style="height:0px" ng-repeat="story in all_stories | filter:search" ng-click="setCurrentlyViewingAllStory(story)">
+				    	<tr style="height:0px" ng-repeat="story in all_stories | reverse" ng-click="setCurrentlyViewingAllStory(story)">
 					    	<td> <img ng-src="{{ story.card_type_img }}"> </td>
 					    	<td> {{ story.name }} </td>
 					    	<td> {{ story.group }} </td>
