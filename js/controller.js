@@ -199,7 +199,7 @@ CatalystApp.controller('CatalystController', function ($scope) {
 		    data : "",
 		    success: function(data) {
 		        $scope.all_stories = parseSuccessData(JSON.parse(data));
-		        $scope.all_stories_selected_story = $scope.all_stories[0];
+		        $scope.all_stories_selected_story = $scope.all_stories[$scope.all_stories.length - 1];
 		        $scope.$apply();
 		    }
 		});
