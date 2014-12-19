@@ -3,7 +3,7 @@ window.catalyst_objects = {
 		{ id: 0000, title: 'ProdOps', employees: 4112 }, 
 		{ id: 0001, title: 'HR', employees: 158 }, 
 		{ id: 0002, title: 'Corp Strategy', employees: 36 }, 
-		{ id: 0003, title: 'Finance/IT/WPR', employees: 1446 }, 
+		{ id: 0003, title: 'Finance and Operations', employees: 1446 }, 
 		{ id: 0004, title: 'Legal', employees: 78 }, 
 		{ id: 0005, title: 'Go-To-Market', employees: 6338 }, 
 		{ id: 0006, title: 'Marketing', employees: 339 }, 
