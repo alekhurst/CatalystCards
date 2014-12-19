@@ -103,7 +103,7 @@
 				    	</tr>
 			    	</thead>
 			    	<tbody>
-				    	<tr style="height:0px" ng-repeat="story in all_stories | reverse" ng-click="setCurrentlyViewingAllStory(story)">
+				    	<tr style="height:0px" ng-repeat="story in all_stories | reverse | filter:search" ng-click="setCurrentlyViewingAllStory(story)">
 					    	<td> <img ng-src="{{ story.card_type_img }}"> </td>
 					    	<td> {{ story.name }} </td>
 					    	<td> {{ story.group }} </td>
@@ -146,6 +146,7 @@
 						<option ng-value="1">Employee</option>
 						<option ng-value="0">Contractor</option>
 					</select>
+					<h3 class='work-type-error' ng-show='story_work_type_error == true' style='color:red; font-size: 18px; margin-top: 250px'>Please choose a work type</h3>
 					<h2>Manager</h2> 
 					<input class="create-story-input-field" type="text" ng-model="story_creation_input.manager">
 					<h2>Share Your Story<br> (English Only Please)</h2> 
@@ -198,6 +199,7 @@
 						<option ng-value="1">Employee</option>
 						<option ng-value="0">Contractor</option>
 					</select>
+					<h3 class='work-type-error' ng-show='commitment_work_type_error == true' style='color:red; font-size: 18px; margin-top: 215px'>Please choose a work type</h3>
 					<h2>Group </h2> 
 					<select class="create-commitment-input-field" ng-model="commitment_creation_input.group" ng-options="group.id as group.title for group in groups | orderBy:'title'"></select>
 				</div>

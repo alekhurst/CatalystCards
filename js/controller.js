@@ -75,6 +75,11 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	 * function calls an AJAX function to do the creation in the database.
 	 */
 	$scope.createStoryInDatabase = function() {
+		$scope.story_work_type_error = false;
+		if(!$scope.story_creation_input.work_type || $scope.story_creation_input.work_type == '') {
+			$scope.story_work_type_error = true;
+			return;
+		}
 		$.ajax({
 		    url : "server/create_story.php",
 		    type: "POST",
@@ -100,6 +105,12 @@ CatalystApp.controller('CatalystController', function ($scope) {
 	 * Called after a user is finished adding a commitment to the database
 	 */
 	$scope.createCommitmentInDatabase = function() {
+		$scope.commitment_work_type_error = false;
+		if(!$scope.commitment_creation_input.work_type || $scope.commitment_creation_input.work_type == '') {
+			$scope.commitment_work_type_error = true;
+			return;
+		}
+
 		console.log($scope.commitment_creation_input)
 		$.ajax({
 		    url : "server/create_commitment.php",
